@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0876a39f507e45142a645a4fe9dd37df, type: 3}
+  m_Name: '[Audio Manager] Audio Library Asset'
+  m_EditorClassIdentifier: 
+  library:
+    list:
+    - key: Player_Footstep_01-bde096e9-7857-450c-8d25-6d8cf920f969
+      value:
+        key: Player_Footstep_01
+        id: Player_Footstep_01-bde096e9-7857-450c-8d25-6d8cf920f969
+        defaultKey: Player_Footstep_01-bde096e9-7857-450c-8d25-6d8cf920f969
+        value: {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_01.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_02-c4344fbf-ff56-4558-a03f-45131c1df898
+      value:
+        key: Player_Footstep_02
+        id: Player_Footstep_02-c4344fbf-ff56-4558-a03f-45131c1df898
+        defaultKey: Player_Footstep_02-c4344fbf-ff56-4558-a03f-45131c1df898
+        value: {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_02.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_03-691cff2c-224a-4ff6-a2f8-3dfcb8579e5d
+      value:
+        key: Player_Footstep_03
+        id: Player_Footstep_03-691cff2c-224a-4ff6-a2f8-3dfcb8579e5d
+        defaultKey: Player_Footstep_03-691cff2c-224a-4ff6-a2f8-3dfcb8579e5d
+        value: {fileID: 8300000, guid: 186de84b3207156479abe98f4958fed0, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_03.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_04-676ae64e-0453-478b-b423-bb17115a9fe4
+      value:
+        key: Player_Footstep_04
+        id: Player_Footstep_04-676ae64e-0453-478b-b423-bb17115a9fe4
+        defaultKey: Player_Footstep_04-676ae64e-0453-478b-b423-bb17115a9fe4
+        value: {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_04.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_05-981caa35-7479-48b0-9970-14065c7c72f7
+      value:
+        key: Player_Footstep_05
+        id: Player_Footstep_05-981caa35-7479-48b0-9970-14065c7c72f7
+        defaultKey: Player_Footstep_05-981caa35-7479-48b0-9970-14065c7c72f7
+        value: {fileID: 8300000, guid: 14e8a8d2158bec840b56c54f5266e692, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_05.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_06-c94beb92-2586-4b61-9577-bb01f823da93
+      value:
+        key: Player_Footstep_06
+        id: Player_Footstep_06-c94beb92-2586-4b61-9577-bb01f823da93
+        defaultKey: Player_Footstep_06-c94beb92-2586-4b61-9577-bb01f823da93
+        value: {fileID: 8300000, guid: 29841e7d5bbfb5b419c9ad16ca8bc4c1, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_06.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_07-7edf3680-df99-4f12-ad32-37042a6f119a
+      value:
+        key: Player_Footstep_07
+        id: Player_Footstep_07-7edf3680-df99-4f12-ad32-37042a6f119a
+        defaultKey: Player_Footstep_07-7edf3680-df99-4f12-ad32-37042a6f119a
+        value: {fileID: 8300000, guid: dd1af302b8902684d9381de1f2d3a5af, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_07.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_08-45cb7aa7-d875-4246-9b25-4a1e58f35050
+      value:
+        key: Player_Footstep_08
+        id: Player_Footstep_08-45cb7aa7-d875-4246-9b25-4a1e58f35050
+        defaultKey: Player_Footstep_08-45cb7aa7-d875-4246-9b25-4a1e58f35050
+        value: {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_08.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_09-e346e575-6d2b-4438-a976-a06bf1527531
+      value:
+        key: Player_Footstep_09
+        id: Player_Footstep_09-e346e575-6d2b-4438-a976-a06bf1527531
+        defaultKey: Player_Footstep_09-e346e575-6d2b-4438-a976-a06bf1527531
+        value: {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_09.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Footstep_10-6bad939c-99e3-43f3-bd18-213d44eca299
+      value:
+        key: Player_Footstep_10
+        id: Player_Footstep_10-6bad939c-99e3-43f3-bd18-213d44eca299
+        defaultKey: Player_Footstep_10-6bad939c-99e3-43f3-bd18-213d44eca299
+        value: {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Footstep_10.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Player_Land-7eab0dde-8a7a-4e3e-b18e-3b91feb0c33b
+      value:
+        key: Player_Land
+        id: Player_Land-7eab0dde-8a7a-4e3e-b18e-3b91feb0c33b
+        defaultKey: Player_Land-7eab0dde-8a7a-4e3e-b18e-3b91feb0c33b
+        value: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
+        path: Assets/Movement/ThirdPersonController/Character/Sfx/Player_Land.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+  groups:
+    list: []
+  mixers:
+    list: []
+  categories: []
+  tags: []

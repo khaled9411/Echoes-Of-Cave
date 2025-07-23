@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 57cbaaf6882b313429e179a430fc3183
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Resources/Prefabs/+[AudioManager]
+    - Source.prefab
+  uploadId: 761325

@@ -1,0 +1,16 @@
+{
+    "name": "CarterGames.AudioManager.Runtime",
+    "rootNamespace": "CarterGames.Assets.AudioManager",
+    "references": [
+        "GUID:a184079ce5111d7429ec494dc3af3d92"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

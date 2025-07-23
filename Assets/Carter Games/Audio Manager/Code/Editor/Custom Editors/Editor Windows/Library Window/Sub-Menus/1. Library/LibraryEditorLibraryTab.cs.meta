@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: db98ac540438eb74cbab810b445604b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: cf26c7678fe4a54488261ff025f3ce25, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Code/Editor/Custom Editors/Editor
+    Windows/Library Window/Sub-Menus/1. Library/LibraryEditorLibraryTab.cs
+  uploadId: 761325

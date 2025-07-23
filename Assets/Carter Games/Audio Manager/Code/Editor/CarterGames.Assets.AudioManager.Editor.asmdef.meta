@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 620f0b43ed9473c47ba48898aaa7e821
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Code/Editor/CarterGames.Assets.AudioManager.Editor.asmdef
+  uploadId: 761325

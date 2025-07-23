@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 3f7cb1c7e1937ff4f9483f1ca859d6d7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: cf26c7678fe4a54488261ff025f3ce25, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Code/Editor/Custom Editors/Edit Module
+    Inspectors/Inspectors/VolumeEditModuleInspector.cs
+  uploadId: 761325

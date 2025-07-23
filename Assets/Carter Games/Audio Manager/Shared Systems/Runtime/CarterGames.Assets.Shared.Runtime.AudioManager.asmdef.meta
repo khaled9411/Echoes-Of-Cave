@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a184079ce5111d7429ec494dc3af3d92
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Shared Systems/Runtime/CarterGames.Assets.Shared.Runtime.AudioManager.asmdef
+  uploadId: 761325

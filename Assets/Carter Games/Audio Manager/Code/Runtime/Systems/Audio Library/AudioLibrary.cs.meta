@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0876a39f507e45142a645a4fe9dd37df
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: 3e3d71b0908cbfb409ebd11f38db6a27, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149123
+  packageName: Audio Manager | CG
+  packageVersion: 3.1.1
+  assetPath: Assets/Carter Games/Audio Manager/Code/Runtime/Systems/Audio Library/AudioLibrary.cs
+  uploadId: 761325

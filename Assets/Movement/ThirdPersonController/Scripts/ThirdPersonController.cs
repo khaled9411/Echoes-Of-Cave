@@ -96,12 +96,12 @@ namespace StarterAssets
         private int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM 
-        public PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
-        public Animator _animator;
-        public CharacterController _controller;
-        public StarterAssetsInputs _input;
-        public GameObject _mainCamera;
+        private Animator _animator;
+        private CharacterController _controller;
+        private StarterAssetsInputs _input;
+        private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
 
@@ -151,10 +151,8 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
-            JumpAndGravity();
             GroundedCheck();
+            JumpAndGravity();
             Move();
         }
 
