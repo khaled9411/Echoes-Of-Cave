@@ -1,22 +1,19 @@
-using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine;
 
 public class StoneSlotInteractable : BaseInteractable
 {
     [Header("Stone Slot Settings")]
     [SerializeField] private StoneType requiredStoneType;
-    [SerializeField] private bool isOccupied = false;
     [SerializeField] private GameObject highlightEffect;
-    [SerializeField] private UnityEvent onStonePlacedSuccessfullyInThisSlot;
+    public UnityEvent onStonePlacedCorrectly;
+    public UnityEvent onStoneRemoved;
 
-    public override string InteractionPrompt
-    {
-        get
-        {
-            if (isOccupied) return "";
-            return base.InteractionPrompt;
-        }
-    }
+    private StoneInteractable placedStone;
+    private bool isOccupied => placedStone != null;
+
+    public StoneType RequiredStoneType => requiredStoneType;
+    public StoneInteractable PlacedStone => placedStone;
 
     protected override void Awake()
     {
@@ -35,45 +32,85 @@ public class StoneSlotInteractable : BaseInteractable
 
     public override bool CanInteract(GameObject interactor)
     {
-        if (isOccupied) return false;
-
         var manager = interactor.GetComponent<InteractionManager>();
-        if (manager != null && manager.heldObject is StoneInteractable heldStone)
+
+        if (!isOccupied && manager != null && manager.heldObject is StoneInteractable)
         {
-            return heldStone.StoneType == requiredStoneType;
+            return true;
         }
+        else if (isOccupied && manager != null && manager.heldObject == null)
+        {
+            return true;
+        }
+
         return false;
     }
 
     public override void Interact(GameObject interactor)
     {
-        if (isOccupied) return;
-
         var manager = interactor.GetComponent<InteractionManager>();
-        if (manager != null && manager.heldObject is StoneInteractable heldStone)
+        if (manager == null) return;
+
+        if (!isOccupied && manager.heldObject is StoneInteractable heldStone)
         {
-            if (heldStone.StoneType == requiredStoneType)
-            {
-                heldStone.PlaceStoneInSlot(interactor, transform);
-                isOccupied = true;
-                onStonePlacedSuccessfullyInThisSlot?.Invoke();
-                UpdateHighlightEffect();
-                PlayInteractionSound();
-                HideInteractionUI();
-                HideHighlight();
-            }
-            else
-            {
-                Debug.Log($"Incorrect stone type for this slot! Expected {requiredStoneType}, got {heldStone.StoneType}.");
-                heldStone.PlaceStoneIncorrectly(interactor);
-                HideInteractionUI();
-            }
+            PlaceStone(heldStone, interactor);
+        }
+        else if (isOccupied && manager.heldObject == null)
+        {
+            PickUpStone(interactor);
         }
         else
         {
-            Debug.Log("You need a stone to place here.");
+            Debug.Log("Invalid interaction with stone slot.");
         }
     }
+
+    private void PlaceStone(StoneInteractable stone, GameObject interactor)
+    {
+        placedStone = stone;
+        stone.PlaceStoneInSlot(interactor, transform);
+
+        var manager = interactor.GetComponent<InteractionManager>();
+        if (manager != null)
+        {
+            manager.ClearHeldObject();
+        }
+
+        PlayInteractionSound();
+        UpdateHighlightEffect();
+        HideInteractionUI();
+        HideHighlight();
+
+        if (placedStone.StoneType == requiredStoneType)
+        {
+            onStonePlacedCorrectly?.Invoke();
+            Debug.Log($"Stone {placedStone.name} placed correctly!");
+        }
+        else
+        {
+            Debug.Log($"Stone {placedStone.name} placed incorrectly! Required: {requiredStoneType}, Placed: {placedStone.StoneType}");
+        }
+    }
+
+    private void PickUpStone(GameObject interactor)
+    {
+        if (placedStone == null) return;
+
+        var manager = interactor.GetComponent<InteractionManager>();
+        if (manager == null) return;
+        StoneInteractable stoneToPickUp = placedStone;
+
+        placedStone = null;
+        manager.ForcePickup(stoneToPickUp);
+
+        PlayInteractionSound();
+        UpdateHighlightEffect();
+        HideInteractionUI();
+        HideHighlight();
+        onStoneRemoved?.Invoke();
+    }
+
+
 
     private void UpdateHighlightEffect()
     {
@@ -88,6 +125,14 @@ public class StoneSlotInteractable : BaseInteractable
         if (!isOccupied)
         {
             base.ShowHighlight();
+        }
+        else
+        {
+            var manager = FindFirstObjectByType<InteractionManager>();
+            if (manager != null && manager.heldObject == null)
+            {
+                base.ShowHighlight();
+            }
         }
     }
 

@@ -1401,6 +1401,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1542771771770292626, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+      propertyPath: allStoneSlots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542771771770292626, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+      propertyPath: 'allStoneSlots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6149068781171222425}
+    - target: {fileID: 1542771771770292626, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+      propertyPath: 'allStoneSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4927708175870109737}
     - target: {fileID: 1620083355776337031, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3045465
@@ -1717,6 +1729,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5893602934608880865, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
   m_PrefabInstance: {fileID: 1359636545837334171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4927708175870109737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6250110378303510194, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+  m_PrefabInstance: {fileID: 1359636545837334171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cabeb48295c2a54789808f6c61e989a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5188411683804337155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6547836745451383448, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
@@ -3463,9 +3486,11 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   interactionSound: {fileID: 0}
   requiredStoneType: 1
-  isOccupied: 0
   highlightEffect: {fileID: 2131993264725180960}
-  onStonePlacedSuccessfullyInThisSlot:
+  onStonePlacedCorrectly:
+    m_PersistentCalls:
+      m_Calls: []
+  onStoneRemoved:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &2889376714485729639 stripped

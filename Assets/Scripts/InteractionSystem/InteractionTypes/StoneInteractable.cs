@@ -44,7 +44,13 @@ public class StoneInteractable : PickableObject
 
     public override void Interact(GameObject interactor)
     {
-        base.Interact(interactor);
+        var manager = interactor.GetComponent<InteractionManager>();
+        if (manager == null) return;
+
+        if (!isCurrentlyPickedUp)
+        {
+            base.Interact(interactor);
+        }
     }
 
     public new void Drop(GameObject interactor)
@@ -73,52 +79,11 @@ public class StoneInteractable : PickableObject
         transform.localRotation = Quaternion.identity;
 
         isCurrentlyPickedUp = false;
-        isInteractable = false;
+        isInteractable = true;
+        objectCollider.enabled = true;
 
         PlayInteractionSound();
-
-        onStonePlacedCorrectly?.Invoke();
         HideHighlight();
         HideInteractionUI();
-        Debug.Log($"Stone {name} placed correctly in slot {slotTransform.name}!");
-
-        interactor.GetComponent<InteractionManager>()?.ClearHeldObject();
-    }
-
-    public void PlaceStoneIncorrectly(GameObject interactor)
-    {
-        if (!IsPickedUp) return;
-
-        Drop(interactor);
-
-        isInteractable = true;
-
-        if (audioSource != null && incorrectPlacementSound != null)
-        {
-            audioSource.PlayOneShot(incorrectPlacementSound);
-        }
-        StartCoroutine(ShakeObject(incorrectPlacementShakeDuration, incorrectPlacementShakeAmount));
-
-        onStonePlacedIncorrectly?.Invoke();
-        Debug.Log($"Stone {name} placed incorrectly!");
-
-        interactor.GetComponent<InteractionManager>()?.ClearHeldObject();
-    }
-
-    private System.Collections.IEnumerator ShakeObject(float duration, float amount)
-    {
-        Vector3 originalPos = transform.position;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            float x = Random.Range(-1f, 1f) * amount;
-            float y = Random.Range(-1f, 1f) * amount;
-
-            transform.position = originalPos + new Vector3(x, y, 0);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = originalPos;
     }
 }

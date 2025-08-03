@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private LayerMask interactionLayerMask = -1;
     [SerializeField] private Transform detectionPoint;
     [SerializeField] private Transform handInteractionPoint;
+
+    public Transform HandInteractionPoint => handInteractionPoint;
 
     private StarterAssets.StarterAssetsInputs input;
     private List<IInteractable> nearbyInteractables = new List<IInteractable>();
@@ -134,7 +137,7 @@ public class InteractionManager : MonoBehaviour
         return closest;
     }
 
-    private void HandleInteractionInput()
+    public void HandleInteractionInput()
     {
         if (input.interact)
         {
@@ -146,7 +149,15 @@ public class InteractionManager : MonoBehaviour
                 {
                     if (currentTargetInteractable.CanInteract(gameObject))
                     {
-                        currentTargetInteractable.Interact(gameObject);
+                        if (currentTargetInteractable is StoneSlotInteractable stoneSlot)
+                        {
+                            stoneSlot.Interact(gameObject);
+                            return;
+                        }
+                        else
+                        {
+                            currentTargetInteractable.Interact(gameObject);
+                        }
                     }
                     else
                     {
@@ -160,11 +171,14 @@ public class InteractionManager : MonoBehaviour
             }
             else if (currentTargetInteractable != null)
             {
-                if (currentTargetInteractable is IPickable pickableObject)
+                if (currentTargetInteractable is StoneSlotInteractable stoneSlot && stoneSlot.PlacedStone != null)
+                {
+                    stoneSlot.Interact(gameObject);
+                }
+                else if (currentTargetInteractable is IPickable pickableObject)
                 {
                     heldObject = pickableObject;
                     pickableObject.PickUp(gameObject, handInteractionPoint);
-                    currentTargetInteractable.Interact(gameObject);
                 }
                 else
                 {
@@ -262,6 +276,16 @@ public class InteractionManager : MonoBehaviour
             }
         }
         return closestSource;
+    }
+
+    public void ForcePickup(IPickable itemToPickup)
+    {
+        if (itemToPickup == null) return;
+
+        ClearHeldObject();
+
+        heldObject = itemToPickup;
+        itemToPickup.PickUp(gameObject, handInteractionPoint);
     }
 
     private void OnDrawGizmosSelected()
