@@ -10,9 +10,23 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private Transform detectionPoint;
     [SerializeField] private Transform handInteractionPoint;
 
+    [Header("Push Settings")]
+    [SerializeField] private float pushDetectionDistance = 0.4f;
+    [SerializeField] private float pushSpeedReduction = 0.5f;
+    [SerializeField] private float pushActivationThreshold = 0.3f;
+    [SerializeField] private float pushStickyTime = 0.1f;
+    [SerializeField] private float directionChangeThreshold = 0.3f;
+    [SerializeField] private float directionStabilityTime = 0.1f;
+
+    [Header("Frame Rate Independence")]
+    [SerializeField] private float movementThreshold = 0.001f;
+    [SerializeField] private float pushUpdateRate = 60f;
+    [SerializeField] private bool useFrameRateIndependentPush = true;
+
     public Transform HandInteractionPoint => handInteractionPoint;
 
     private StarterAssets.StarterAssetsInputs input;
+    private StarterAssets.ThirdPersonController playerController;
     private List<IInteractable> nearbyInteractables = new List<IInteractable>();
     private IInteractable currentTargetInteractable;
     private IInteractable lastTargetInteractable;
@@ -20,9 +34,34 @@ public class InteractionManager : MonoBehaviour
     public IPickable heldObject { get; private set; } = null;
     private IContinuousInteractable currentContinuousInteractable = null;
 
+    private IPushable currentPushable = null;
+    private IPullable currentPullable = null;
+    private Vector3 lastPlayerPosition;
+    private Vector3 currentMovementDirection;
+    private Vector3 smoothedMovementDirection;
+    private Vector3 lastPushDirection;
+    private bool wasMovingLastFrame = false;
+    private float originalMoveSpeed = 0f;
+    private float originalSprintSpeed = 0f;
+    private bool speedsModified = false;
+
+    private float lastPushUpdateTime = 0f;
+    private float pushUpdateInterval;
+    private Vector3 accumulatedPlayerMovement = Vector3.zero;
+    private float pushStickyTimer = 0f;
+    private bool pushWasActiveLastFrame = false;
+
+    private Vector3 movementDirectionBuffer = Vector3.zero;
+    private float movementSmoothingFactor = 8f;
+
+    private Vector3 previousMovementDirection = Vector3.zero;
+    private float currentDirectionTime = 0f;
+
     private void Start()
     {
         input = GetComponent<StarterAssets.StarterAssetsInputs>();
+        playerController = GetComponent<StarterAssets.ThirdPersonController>();
+
         if (detectionPoint == null)
             detectionPoint = transform;
         if (handInteractionPoint == null)
@@ -32,13 +71,275 @@ public class InteractionManager : MonoBehaviour
             handPoint.transform.localPosition = new Vector3(0.5f, 0.5f, 0.5f);
             handInteractionPoint = handPoint.transform;
         }
+
+        lastPlayerPosition = transform.position;
+        pushUpdateInterval = 1f / pushUpdateRate;
+        lastPushUpdateTime = Time.time;
+
+        if (playerController != null)
+        {
+            originalMoveSpeed = playerController.MoveSpeed;
+            originalSprintSpeed = playerController.SprintSpeed;
+        }
     }
 
     private void Update()
     {
+        UpdateMovementTracking();
         DetectInteractables();
+
+        if (useFrameRateIndependentPush)
+        {
+            HandlePushSystemFrameIndependent();
+        }
+        else
+        {
+            HandlePushSystem();
+        }
+
         HandleInteractionInput();
         UpdateContinuousInteraction();
+        UpdatePullSystem();
+    }
+
+    private void UpdateMovementTracking()
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 positionDelta = currentPosition - lastPlayerPosition;
+
+        if (positionDelta.magnitude > movementThreshold)
+        {
+            Vector3 rawDirection = positionDelta.normalized;
+
+            if (previousMovementDirection != Vector3.zero)
+            {
+                float directionSimilarity = Vector3.Dot(rawDirection, previousMovementDirection);
+
+                if (directionSimilarity < directionChangeThreshold)
+                {
+                    currentDirectionTime = 0f;
+                    if (currentPushable != null)
+                    {
+                        StopCurrentPush();
+                    }
+                }
+                else
+                {
+                    currentDirectionTime += Time.deltaTime;
+                }
+            }
+            else
+            {
+                currentDirectionTime = 0f;
+            }
+
+            if (currentDirectionTime >= directionStabilityTime)
+            {
+                movementDirectionBuffer = Vector3.Lerp(movementDirectionBuffer, rawDirection,
+                    movementSmoothingFactor * Time.deltaTime);
+            }
+            else
+            {
+                movementDirectionBuffer = Vector3.Lerp(movementDirectionBuffer, rawDirection,
+                    movementSmoothingFactor * 3f * Time.deltaTime);
+            }
+
+            currentMovementDirection = rawDirection;
+            smoothedMovementDirection = movementDirectionBuffer;
+            previousMovementDirection = rawDirection;
+            wasMovingLastFrame = true;
+
+            accumulatedPlayerMovement += positionDelta;
+        }
+        else
+        {
+            wasMovingLastFrame = false;
+            currentDirectionTime = 0f;
+
+            movementDirectionBuffer = Vector3.Lerp(movementDirectionBuffer, Vector3.zero,
+                movementSmoothingFactor * 0.5f * Time.deltaTime);
+        }
+
+        lastPlayerPosition = currentPosition;
+    }
+
+    private void HandlePushSystemFrameIndependent()
+    {
+        if (currentPullable != null) return;
+
+        float currentTime = Time.time;
+        bool shouldUpdatePush = (currentTime - lastPushUpdateTime) >= pushUpdateInterval;
+
+        IPushable nearestPushable = GetNearestPushable();
+
+        if (pushStickyTimer > 0f)
+        {
+            pushStickyTimer -= Time.deltaTime;
+        }
+
+        if (nearestPushable != null && wasMovingLastFrame)
+        {
+            Transform pushableTransform = (nearestPushable as MonoBehaviour).transform;
+            Vector3 directionToPushable = (pushableTransform.position - transform.position).normalized;
+            float distanceToPushable = Vector3.Distance(transform.position, pushableTransform.position);
+
+            bool isCloseEnough = distanceToPushable <= pushDetectionDistance;
+            bool isMovingTowardsPushable = Vector3.Dot(smoothedMovementDirection.normalized, directionToPushable) > pushActivationThreshold;
+            bool hasEnoughMovement = accumulatedPlayerMovement.magnitude > movementThreshold;
+
+            if (currentPushable == null)
+            {
+                if (isCloseEnough && isMovingTowardsPushable && hasEnoughMovement)
+                {
+                    if (nearestPushable.CanPush(gameObject, currentMovementDirection))
+                    {
+                        currentPushable = nearestPushable;
+                        currentPushable.StartPush(gameObject, currentMovementDirection);
+                        lastPushDirection = currentMovementDirection;
+                        pushStickyTimer = pushStickyTime;
+
+                        ModifyPlayerSpeed(pushSpeedReduction, false);
+                    }
+                }
+            }
+            else if (currentPushable == nearestPushable)
+            {
+                bool isSameDirection = Vector3.Dot(currentMovementDirection.normalized, lastPushDirection.normalized) > 0.5f;
+                bool isStillMovingTowardsPushable = Vector3.Dot(currentMovementDirection.normalized, directionToPushable) > 0.3f;
+
+                if (!isSameDirection || !isStillMovingTowardsPushable || !isCloseEnough)
+                {
+                    StopCurrentPush();
+                }
+                else if (shouldUpdatePush && hasEnoughMovement)
+                {
+                    float currentPlayerSpeed = GetCurrentPlayerSpeed();
+                    currentPushable.UpdatePush(gameObject, currentMovementDirection, currentPlayerSpeed);
+                    lastPushDirection = currentMovementDirection;
+                    lastPushUpdateTime = currentTime;
+
+                    accumulatedPlayerMovement = Vector3.zero;
+                    pushStickyTimer = pushStickyTime;
+                }
+            }
+            else if (currentPushable != nearestPushable)
+            {
+                StopCurrentPush();
+            }
+        }
+        else if (currentPushable != null)
+        {
+            if (!wasMovingLastFrame && pushStickyTimer <= 0f)
+            {
+                StopCurrentPush();
+            }
+            else if (pushStickyTimer > 0f && nearestPushable == currentPushable)
+            {
+                Transform pushableTransform = (nearestPushable as MonoBehaviour).transform;
+                float distanceToPushable = Vector3.Distance(transform.position, pushableTransform.position);
+
+                if (distanceToPushable > pushDetectionDistance * 1.5f)
+                {
+                    StopCurrentPush();
+                }
+            }
+            else
+            {
+                StopCurrentPush();
+            }
+        }
+
+        pushWasActiveLastFrame = (currentPushable != null);
+    }
+
+    private void HandlePushSystem()
+    {
+        if (currentPullable != null) return;
+
+        IPushable nearestPushable = GetNearestPushable();
+
+        if (nearestPushable != null && wasMovingLastFrame)
+        {
+            Transform pushableTransform = (nearestPushable as MonoBehaviour).transform;
+            Vector3 directionToPushable = (pushableTransform.position - transform.position).normalized;
+            float distanceToPushable = Vector3.Distance(transform.position, pushableTransform.position);
+
+            bool isCloseEnough = distanceToPushable <= pushDetectionDistance;
+            bool isMovingTowardsPushable = Vector3.Dot(currentMovementDirection, directionToPushable) > 0.7f;
+
+            if (currentPushable == null)
+            {
+                if (isCloseEnough && isMovingTowardsPushable)
+                {
+                    if (nearestPushable.CanPush(gameObject, currentMovementDirection))
+                    {
+                        currentPushable = nearestPushable;
+                        currentPushable.StartPush(gameObject, currentMovementDirection);
+                        lastPushDirection = currentMovementDirection;
+
+                        ModifyPlayerSpeed(pushSpeedReduction, false);
+                    }
+                }
+            }
+            else if (currentPushable == nearestPushable)
+            {
+                bool isSameDirection = Vector3.Dot(currentMovementDirection, lastPushDirection) > 0.5f;
+                bool isStillMovingTowardsPushable = Vector3.Dot(currentMovementDirection, directionToPushable) > 0.3f;
+
+                if (isSameDirection && isStillMovingTowardsPushable && isCloseEnough)
+                {
+                    float currentPlayerSpeed = GetCurrentPlayerSpeed();
+                    currentPushable.UpdatePush(gameObject, currentMovementDirection, currentPlayerSpeed);
+                    lastPushDirection = currentMovementDirection;
+                }
+                else
+                {
+                    StopCurrentPush();
+                }
+            }
+            else
+            {
+                StopCurrentPush();
+            }
+        }
+        else if (currentPushable != null)
+        {
+            StopCurrentPush();
+        }
+    }
+
+    private IPushable GetNearestPushable()
+    {
+        IPushable nearest = null;
+        float nearestDistance = float.MaxValue;
+
+        foreach (var interactable in nearbyInteractables)
+        {
+            if (interactable is IPushable pushable && interactable is MonoBehaviour mono)
+            {
+                float distance = Vector3.Distance(transform.position, mono.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearest = pushable;
+                }
+            }
+        }
+
+        return nearest;
+    }
+
+    private void StopCurrentPush()
+    {
+        if (currentPushable != null)
+        {
+            currentPushable.StopPush(gameObject);
+            currentPushable = null;
+            pushStickyTimer = 0f;
+            accumulatedPlayerMovement = Vector3.zero;
+
+            RestorePlayerSpeed();
+        }
     }
 
     private void DetectInteractables()
@@ -52,7 +353,6 @@ public class InteractionManager : MonoBehaviour
             var interactables = collider.GetComponents<IInteractable>();
             foreach (var interactable in interactables)
             {
-
                 if (interactable.CanInteract(gameObject))
                 {
                     if (interactable is IDistanceBasedInteractable distanceBased)
@@ -72,6 +372,15 @@ public class InteractionManager : MonoBehaviour
         }
 
         UpdateInteractionUI();
+    }
+
+    private void UpdatePullSystem()
+    {
+        if (currentPullable != null && wasMovingLastFrame)
+        {
+            float currentPlayerSpeed = GetCurrentPlayerSpeed();
+            currentPullable.UpdatePull(gameObject, currentMovementDirection, currentPlayerSpeed);
+        }
     }
 
     private void UpdateInteractionUI()
@@ -124,6 +433,8 @@ public class InteractionManager : MonoBehaviour
 
         foreach (var interactable in nearbyInteractables)
         {
+            if (interactable is IPushable) continue;
+
             if (interactable is MonoBehaviour mono)
             {
                 float distance = Vector3.Distance(transform.position, mono.transform.position);
@@ -142,6 +453,23 @@ public class InteractionManager : MonoBehaviour
         if (input.interact)
         {
             input.interact = false;
+
+            if (currentTargetInteractable is IPullable pullable)
+            {
+                if (currentPullable == pullable)
+                {
+                    currentPullable.StopPull(gameObject);
+                    currentPullable = null;
+
+                    RestorePlayerSpeed();
+                }
+                else if (currentPullable == null)
+                {
+                    currentPullable = pullable;
+                    currentPullable.StartPull(gameObject);
+                }
+                return;
+            }
 
             if (heldObject != null)
             {
@@ -211,7 +539,7 @@ public class InteractionManager : MonoBehaviour
                 FireSourceInteractable fireSource = GetClosestFireSource();
                 if (fireSource != null && fireSource.CanInteract(gameObject))
                 {
-                    if (currentContinuousInteractable == null || currentContinuousInteractable != fireSource)
+                    if (currentContinuousInteractable == null)
                     {
                         currentContinuousInteractable = fireSource;
                         fireSource.StartInteraction(gameObject);
@@ -288,17 +616,79 @@ public class InteractionManager : MonoBehaviour
         itemToPickup.PickUp(gameObject, handInteractionPoint);
     }
 
+    public void StopAllPushPull()
+    {
+        StopCurrentPush();
+
+        if (currentPullable != null)
+        {
+            currentPullable.StopPull(gameObject);
+            currentPullable = null;
+            RestorePlayerSpeed();
+        }
+    }
+
+    private void ModifyPlayerSpeed(float speedReduction, bool allowSprint)
+    {
+        if (playerController == null || speedsModified) return;
+
+        speedsModified = true;
+        playerController.MoveSpeed *= speedReduction;
+
+        if (!allowSprint)
+        {
+            playerController.SprintSpeed = playerController.MoveSpeed;
+        }
+        else
+        {
+            playerController.SprintSpeed *= speedReduction;
+        }
+    }
+
+    private void RestorePlayerSpeed()
+    {
+        if (playerController == null || !speedsModified) return;
+
+        speedsModified = false;
+        playerController.MoveSpeed = originalMoveSpeed;
+        playerController.SprintSpeed = originalSprintSpeed;
+    }
+
+    private float GetCurrentPlayerSpeed()
+    {
+        if (playerController == null) return 1f;
+
+        if (input.sprint && playerController.SprintSpeed > playerController.MoveSpeed)
+        {
+            return playerController.SprintSpeed;
+        }
+
+        return playerController.MoveSpeed;
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (detectionPoint != null)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(detectionPoint.position, detectionRadius);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(detectionPoint.position, pushDetectionDistance);
         }
         if (handInteractionPoint != null)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(handInteractionPoint.position, 0.1f);
+        }
+
+        if (Application.isPlaying && currentPushable != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(transform.position, currentMovementDirection * 2f);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawRay(transform.position + Vector3.up * 0.2f, smoothedMovementDirection * 2f);
         }
     }
 }

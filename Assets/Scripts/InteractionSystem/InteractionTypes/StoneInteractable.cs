@@ -13,12 +13,9 @@ public class StoneInteractable : PickableObject
 {
     [Header("Stone Specific Settings")]
     [SerializeField] private StoneType stoneType;
-    [SerializeField] private string placementPrompt = "Press E to place stone";
     [SerializeField] private UnityEvent onStonePlacedCorrectly;
     [SerializeField] private UnityEvent onStonePlacedIncorrectly;
     [SerializeField] private AudioClip incorrectPlacementSound;
-    [SerializeField] private float incorrectPlacementShakeDuration = 0.2f;
-    [SerializeField] private float incorrectPlacementShakeAmount = 0.1f;
 
     private Transform originalLocalParent;
     private Vector3 originalLocalPosition;
