@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private LayerMask interactionLayerMask = -1;
     [SerializeField] private Transform detectionPoint;
     [SerializeField] private Transform handInteractionPoint;
+
+    [Header("IK Settings")]
+    public TwoBoneIKConstraint rightHandIK;
+    public TwoBoneIKConstraint leftHandIK;
+    public Transform rightHandTarget;
+    public Transform leftHandTarget;
 
     [Header("Push Settings")]
     [SerializeField] private float pushDetectionDistance = 0.4f;
@@ -690,5 +698,21 @@ public class InteractionManager : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawRay(transform.position + Vector3.up * 0.2f, smoothedMovementDirection * 2f);
         }
+    }
+
+    Tween cuurentTween = null;
+    public void LerpRightHandWeight(float target, float duration)
+    {
+        if(cuurentTween != null && cuurentTween.IsActive())
+        {
+            cuurentTween.Kill();
+        }
+
+        cuurentTween = DOTween.To(
+                () => rightHandIK.weight,
+                x => rightHandIK.weight = x,
+                target,
+                duration
+            );
     }
 }

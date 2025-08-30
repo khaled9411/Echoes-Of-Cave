@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2679151223607427026}
   - component: {fileID: 5135318152448703855}
   - component: {fileID: 1920290373587010434}
+  - component: {fileID: -1843709182629260931}
   m_Layer: 0
   m_Name: TorchStick
   m_TagString: Untagged
@@ -111,6 +112,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43180043946635588, guid: f04dfdd221012bd4ab4995cdc164ad65, type: 2}
+--- !u!114 &-1843709182629260931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255715597752599419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f98e1b2f0e34ee4d8b03a9c156739ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Press E to interact
+  isInteractable: 1
+  highlightObject: {fileID: 0}
+  highlightMaterial: {fileID: 0}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  audioSource: {fileID: 0}
+  interactionSound: {fileID: 0}
+  pickUpPrompt: Press E to pick up
+  dropPrompt: Press E to drop
+  pickedUpLocalPosition: {x: 0, y: 0, z: 0}
+  pickedUpLocalRotation: {x: 0, y: 0, z: 0}
+  disablePhysicsOnPickUp: 1
+  reEnablePhysicsOnDrop: 1
+  extinguishTime: 300
+  flameEffect: {fileID: 0}
+  torchLight: {fileID: 0}
+  relightPrompt: Hold E to relight
 --- !u!1001 &2509069722947638862
 PrefabInstance:
   m_ObjectHideFlags: 0
