@@ -11,9 +11,11 @@ public class PickableObject : BaseInteractable, IPickable
     [SerializeField] protected Vector3 pickedUpLocalRotation = new Vector3(0, 0, 0);
     [SerializeField] protected bool disablePhysicsOnPickUp = true;
     [SerializeField] protected bool reEnablePhysicsOnDrop = true;
-    [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] public Vector3 holdIKConstrintPosition;
-    [SerializeField] public Vector3 holdIKConstrintRotation;
+    [SerializeField] protected float rotationSpeed = 5f;
+    public Vector3 holdIKConstrintPosition;
+    public Vector3 holdIKConstrintRotation;
+    public string animationTriggerName = "Is Grabing Item";
+    public bool isCarryingObject = false;
 
     protected Rigidbody rb;
     protected Collider objectCollider;
@@ -61,6 +63,10 @@ public class PickableObject : BaseInteractable, IPickable
 
         isCurrentlyPickedUp = false;
         isInteractable = true;
+
+        Animator playerAnimator = interactor.GetComponent<Animator>();
+        if (isCarryingObject && playerAnimator != null)
+            playerAnimator.SetTrigger("StopCarrying");
 
         transform.SetParent(originalParent);
 
@@ -121,9 +127,9 @@ public class PickableObject : BaseInteractable, IPickable
         }
 
         //pick up animation
-        playerAnimator.SetTrigger("Is Grabing Item");
+        playerAnimator.SetTrigger(animationTriggerName);
         InteractionManager interactionManager = player.GetComponent<InteractionManager>();
-        if (interactionManager != null)
+        if (interactionManager != null && !isCarryingObject)
         {
             interactionManager.rightHandTarget.position = transform.position;
             interactionManager.rightHandTarget.rotation = Quaternion.Euler(-260f, -60, 0);
@@ -159,6 +165,9 @@ public class PickableObject : BaseInteractable, IPickable
         {
             objectCollider.enabled = false;
         }
+
+        if (isCarryingObject)
+            playerAnimator.SetTrigger("Carrying");
 
         Debug.Log($"{name} picked up by {player.name}");
         HideInteractionUI();

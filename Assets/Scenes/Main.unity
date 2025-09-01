@@ -460,6 +460,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: useLeftHand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7255828528179464773, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 0

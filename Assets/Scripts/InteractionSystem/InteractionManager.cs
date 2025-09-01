@@ -700,17 +700,32 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    Tween cuurentTween = null;
+    Tween cuurentRightTween = null;
+    Tween cuurentLeftTween = null;
     public void LerpRightHandWeight(float target, float duration)
     {
-        if(cuurentTween != null && cuurentTween.IsActive())
+        if(cuurentRightTween != null && cuurentRightTween.IsActive())
         {
-            cuurentTween.Kill();
+            cuurentRightTween.Kill();
         }
 
-        cuurentTween = DOTween.To(
+        cuurentRightTween = DOTween.To(
                 () => rightHandIK.weight,
                 x => rightHandIK.weight = x,
+                target,
+                duration
+            );
+    }
+    public void LerpLeftHandWeight(float target, float duration)
+    {
+        if (cuurentLeftTween != null && cuurentLeftTween.IsActive())
+        {
+            cuurentLeftTween.Kill();
+        }
+
+        cuurentLeftTween = DOTween.To(
+                () => leftHandIK.weight,
+                x => leftHandIK.weight = x,
                 target,
                 duration
             );
