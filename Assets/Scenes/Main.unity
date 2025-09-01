@@ -464,6 +464,54 @@ PrefabInstance:
       propertyPath: useLeftHand
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: isCarryingObject
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: holeLocalPosition.z
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: holeLocalRotation.x
+      value: -66.192
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: holeLocalRotation.y
+      value: 83.927
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: holeLocalRotation.z
+      value: 94.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: animationTriggerName
+      value: StartCarrying
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalPosition.x
+      value: 33.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalPosition.y
+      value: 53.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalPosition.z
+      value: -17.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalRotation.x
+      value: 52.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalRotation.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998467914107770225, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: pickedUpLocalRotation.z
+      value: 61.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7255828528179464773, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 0
