@@ -1,3 +1,5 @@
+using StarterAssets;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +18,8 @@ public class StoneInteractable : PickableObject
     [SerializeField] private UnityEvent onStonePlacedCorrectly;
     [SerializeField] private UnityEvent onStonePlacedIncorrectly;
     [SerializeField] private AudioClip incorrectPlacementSound;
+    [SerializeField] private Vector3 holeLocalPosition;
+    [SerializeField] private Vector3 holeLocalRotation;
 
     private Transform originalLocalParent;
     private Vector3 originalLocalPosition;
@@ -61,6 +65,50 @@ public class StoneInteractable : PickableObject
     {
         if (!IsPickedUp) return;
 
+        StartCoroutine(SmoothRotateAndAnimate(interactor, slotTransform));
+    }
+
+    private IEnumerator SmoothRotateAndAnimate(GameObject player, Transform parent)
+    {
+        ThirdPersonController controller = player.GetComponent<ThirdPersonController>();
+        if (controller != null)
+            controller.disableMovement = true;
+
+        Debug.Log($"Starting rotation and animation coroutine in {player}.");
+        Animator playerAnimator = player.GetComponent<Animator>();
+
+        if (playerAnimator == null)
+        {
+            Debug.LogError("Player GameObject does not have an Animator component!");
+            yield break;
+        }
+
+        Vector3 direction = (transform.position - player.transform.position).normalized;
+
+        direction.y = 0;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        bool isRotating = true;
+
+        while (isRotating)
+        {
+            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            if (Quaternion.Angle(player.transform.rotation, targetRotation) < 0.3f)
+            {
+                isRotating = false;
+            }
+
+            yield return null;
+        }
+
+        //Put In The Hole animation
+        playerAnimator.SetTrigger("PutInTheHole");
+
+
+        yield return new WaitForSeconds(0.7f);
+
         if (rb != null)
         {
             rb.isKinematic = true;
@@ -71,9 +119,9 @@ public class StoneInteractable : PickableObject
             objectCollider.enabled = false;
         }
 
-        transform.SetParent(slotTransform);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        transform.SetParent(parent);
+        transform.localPosition = holeLocalPosition;
+        transform.localRotation = Quaternion.Euler(holeLocalRotation);
 
         isCurrentlyPickedUp = false;
         isInteractable = true;
@@ -82,5 +130,8 @@ public class StoneInteractable : PickableObject
         PlayInteractionSound();
         HideHighlight();
         HideInteractionUI();
+
+        if (controller != null)
+            controller.disableMovement = false;
     }
 }

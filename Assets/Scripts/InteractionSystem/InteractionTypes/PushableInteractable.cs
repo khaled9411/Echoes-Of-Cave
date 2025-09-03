@@ -61,6 +61,8 @@ public abstract class PushableInteractable : BaseInteractable, IPushable
 
     public virtual void StartPush(GameObject pusher, Vector3 pushDirection)
     {
+        if(pusher.GetComponent<InteractionManager>().heldObject != null) return;
+
         isBeingPushed = true;
         currentPusher = pusher;
         lastValidPosition = transform.position;
@@ -79,7 +81,7 @@ public abstract class PushableInteractable : BaseInteractable, IPushable
 
     public virtual void UpdatePush(GameObject pusher, Vector3 pushDirection, float playerSpeed)
     {
-        if (!isBeingPushed || currentPusher != pusher) return;
+        if ((!isBeingPushed || currentPusher != pusher) && pusher.GetComponent<InteractionManager>().heldObject != null) return;
 
         float currentTime = Time.time;
         float deltaTime = currentTime - lastUpdateTime;

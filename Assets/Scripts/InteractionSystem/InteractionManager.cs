@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private LayerMask interactionLayerMask = -1;
     [SerializeField] private Transform detectionPoint;
     [SerializeField] private Transform handInteractionPoint;
+
+    [Header("IK Settings")]
+    public TwoBoneIKConstraint rightHandIK;
+    public TwoBoneIKConstraint leftHandIK;
+    public Transform rightHandTarget;
+    public Transform leftHandTarget;
 
     [Header("Push Settings")]
     [SerializeField] private float pushDetectionDistance = 0.4f;
@@ -49,7 +57,6 @@ public class InteractionManager : MonoBehaviour
     private float pushUpdateInterval;
     private Vector3 accumulatedPlayerMovement = Vector3.zero;
     private float pushStickyTimer = 0f;
-    private bool pushWasActiveLastFrame = false;
 
     private Vector3 movementDirectionBuffer = Vector3.zero;
     private float movementSmoothingFactor = 8f;
@@ -165,7 +172,7 @@ public class InteractionManager : MonoBehaviour
 
     private void HandlePushSystemFrameIndependent()
     {
-        if (currentPullable != null) return;
+        if (currentPullable != null && heldObject != null) return;
 
         float currentTime = Time.time;
         bool shouldUpdatePush = (currentTime - lastPushUpdateTime) >= pushUpdateInterval;
@@ -248,13 +255,11 @@ public class InteractionManager : MonoBehaviour
                 StopCurrentPush();
             }
         }
-
-        pushWasActiveLastFrame = (currentPushable != null);
     }
 
     private void HandlePushSystem()
     {
-        if (currentPullable != null) return;
+        if (currentPullable != null && heldObject != null) return;
 
         IPushable nearestPushable = GetNearestPushable();
 
@@ -628,7 +633,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    private void ModifyPlayerSpeed(float speedReduction, bool allowSprint)
+    public void ModifyPlayerSpeed(float speedReduction, bool allowSprint)
     {
         if (playerController == null || speedsModified) return;
 
@@ -645,7 +650,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    private void RestorePlayerSpeed()
+    public void RestorePlayerSpeed()
     {
         if (playerController == null || !speedsModified) return;
 
@@ -690,5 +695,36 @@ public class InteractionManager : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawRay(transform.position + Vector3.up * 0.2f, smoothedMovementDirection * 2f);
         }
+    }
+
+    Tween cuurentRightTween = null;
+    Tween cuurentLeftTween = null;
+    public void LerpRightHandWeight(float target, float duration)
+    {
+        if(cuurentRightTween != null && cuurentRightTween.IsActive())
+        {
+            cuurentRightTween.Kill();
+        }
+
+        cuurentRightTween = DOTween.To(
+                () => rightHandIK.weight,
+                x => rightHandIK.weight = x,
+                target,
+                duration
+            );
+    }
+    public void LerpLeftHandWeight(float target, float duration)
+    {
+        if (cuurentLeftTween != null && cuurentLeftTween.IsActive())
+        {
+            cuurentLeftTween.Kill();
+        }
+
+        cuurentLeftTween = DOTween.To(
+                () => leftHandIK.weight,
+                x => leftHandIK.weight = x,
+                target,
+                duration
+            );
     }
 }
