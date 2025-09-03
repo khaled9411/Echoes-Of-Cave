@@ -57,7 +57,6 @@ public class InteractionManager : MonoBehaviour
     private float pushUpdateInterval;
     private Vector3 accumulatedPlayerMovement = Vector3.zero;
     private float pushStickyTimer = 0f;
-    private bool pushWasActiveLastFrame = false;
 
     private Vector3 movementDirectionBuffer = Vector3.zero;
     private float movementSmoothingFactor = 8f;
@@ -173,7 +172,7 @@ public class InteractionManager : MonoBehaviour
 
     private void HandlePushSystemFrameIndependent()
     {
-        if (currentPullable != null) return;
+        if (currentPullable != null && heldObject != null) return;
 
         float currentTime = Time.time;
         bool shouldUpdatePush = (currentTime - lastPushUpdateTime) >= pushUpdateInterval;
@@ -256,13 +255,11 @@ public class InteractionManager : MonoBehaviour
                 StopCurrentPush();
             }
         }
-
-        pushWasActiveLastFrame = (currentPushable != null);
     }
 
     private void HandlePushSystem()
     {
-        if (currentPullable != null) return;
+        if (currentPullable != null && heldObject != null) return;
 
         IPushable nearestPushable = GetNearestPushable();
 
@@ -636,7 +633,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    private void ModifyPlayerSpeed(float speedReduction, bool allowSprint)
+    public void ModifyPlayerSpeed(float speedReduction, bool allowSprint)
     {
         if (playerController == null || speedsModified) return;
 
@@ -653,7 +650,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    private void RestorePlayerSpeed()
+    public void RestorePlayerSpeed()
     {
         if (playerController == null || !speedsModified) return;
 

@@ -28,6 +28,11 @@ public class PushableBox : PushableInteractable
 
     public override void StartPush(GameObject pusher, Vector3 pushDirection)
     {
+        Animator playerAnimator = pusher.GetComponent<Animator>();
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("StartPush");
+        }
         base.StartPush(pusher, pushDirection);
 
         if (pushStartSound != null && audioSource != null)
@@ -50,6 +55,12 @@ public class PushableBox : PushableInteractable
 
     public override void UpdatePush(GameObject pusher, Vector3 pushDirection, float playerSpeed)
     {
+        Animator playerAnimator = pusher.GetComponent<Animator>();
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("Pushing");
+        }
+
         base.UpdatePush(pusher, pushDirection, playerSpeed);
 
         if (!isPushSoundPlaying && pushLoopSound != null && pushAudioSource != null)
@@ -62,6 +73,12 @@ public class PushableBox : PushableInteractable
 
     public override void StopPush(GameObject pusher)
     {
+        Animator playerAnimator = pusher.GetComponent<Animator>();
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("StopPush");
+        }
+
         base.StopPush(pusher);
 
         if (isPushSoundPlaying && pushAudioSource != null)

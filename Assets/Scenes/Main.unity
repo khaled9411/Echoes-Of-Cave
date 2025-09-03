@@ -377,6 +377,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 155980, guid: 4277b7dfb488f614f8e5efff603e78da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1710047319}
+    - targetCorrespondingSourceObject: {fileID: 155980, guid: 4277b7dfb488f614f8e5efff603e78da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1710047324}
   m_SourcePrefab: {fileID: 100100000, guid: 4277b7dfb488f614f8e5efff603e78da, type: 3}
 --- !u!1 &143029153 stripped
 GameObject:
@@ -2217,6 +2220,75 @@ PrefabInstance:
       addedObject: {fileID: 2137389746}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+--- !u!1 &1522753281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522753282}
+  - component: {fileID: 1522753284}
+  - component: {fileID: 1522753283}
+  m_Layer: 8
+  m_Name: PushDetectionZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1522753282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522753281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4765712749952515532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1522753283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522753281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec376c7871a6c5c43814ec6593b3155e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionBoxSize: {x: 1, y: 1, z: 1}
+  detectionBoxOffset: {x: 0, y: 1, z: 0.5}
+  pushController: {fileID: 8486675054214429455}
+--- !u!65 &1522753284
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522753281}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1526590149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2612,6 +2684,33 @@ MonoBehaviour:
   pushLoopSound: {fileID: 0}
   pushStopSound: {fileID: 0}
   dustParticles: {fileID: 0}
+--- !u!54 &1710047324
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710047318}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1719040497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 487758, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
@@ -3052,6 +3151,7 @@ Transform:
   - {fileID: 753296893}
   - {fileID: 549155370010779178}
   - {fileID: 1288844251}
+  - {fileID: 1522753282}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5289731558688188278
@@ -3070,6 +3170,7 @@ GameObject:
   - component: {fileID: 8486675054214429451}
   - component: {fileID: 2704562806790000006}
   - component: {fileID: 8486675054214429450}
+  - component: {fileID: 8486675054214429455}
   - component: {fileID: 5289731558688188282}
   - component: {fileID: 8486675054214429454}
   - component: {fileID: 8486675054214429453}
@@ -3302,7 +3403,7 @@ MonoBehaviour:
   leftHandIK: {fileID: 1837167464}
   rightHandTarget: {fileID: 1880902173}
   leftHandTarget: {fileID: 1849227532}
-  pushDetectionDistance: 2.1
+  pushDetectionDistance: 1.7
   pushSpeedReduction: 0.5
   pushActivationThreshold: 0.3
   pushStickyTime: 0.1
@@ -3395,6 +3496,55 @@ MonoBehaviour:
   - {fileID: 370015850}
   - {fileID: 233599444}
   - {fileID: 1140181635}
+--- !u!114 &8486675054214429455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289731558688188278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0434a830a0feaa9428636a27502e846c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandIK: {fileID: 1837167464}
+  rightHandIK: {fileID: 1090958574}
+  leftHandTarget: {fileID: 1849227532}
+  rightHandTarget: {fileID: 1880902173}
+  leftHandRotation: {x: 0, y: 100, z: -60}
+  rightHandRotation: {x: 180, y: -100, z: -60}
+  leftShoulderReference: {fileID: 186975586}
+  rightShoulderReference: {fileID: 1162529507}
+  maxPushAngle: 45
+  pushHeight: 1.2
+  handOffset: 0
+  revalidateDelay: 0.25
+  transitionSpeed: 3
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
