@@ -223,9 +223,509 @@ MonoBehaviour:
         metaData:
           category: 
           tags: []
+    - key: atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215-edb8ecfc-88d5-4de6-a9a8-79b1899294e5
+      value:
+        key: atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215
+        id: atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215-edb8ecfc-88d5-4de6-a9a8-79b1899294e5
+        defaultKey: atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215-edb8ecfc-88d5-4de6-a9a8-79b1899294e5
+        value: {fileID: 8300000, guid: 0d8435d874c25d644819ab43f8d83c07, type: 3}
+        path: Assets/Music and SFX/BackGround/atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: dark-fantasy-ambient-dungeon-synthpiano-verse-248214-846af1da-e812-4c75-9334-59d63f893e7a
+      value:
+        key: dark-fantasy-ambient-dungeon-synthpiano-verse-248214
+        id: dark-fantasy-ambient-dungeon-synthpiano-verse-248214-846af1da-e812-4c75-9334-59d63f893e7a
+        defaultKey: dark-fantasy-ambient-dungeon-synthpiano-verse-248214-846af1da-e812-4c75-9334-59d63f893e7a
+        value: {fileID: 8300000, guid: 21c4029f6328eb84f877af22463a4508, type: 3}
+        path: Assets/Music and SFX/BackGround/dark-fantasy-ambient-dungeon-synthpiano-verse-248214.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: light-dungeon-20241130-315314-a831a2f9-7882-4844-b4d2-01d4a9dbb645
+      value:
+        key: light-dungeon-20241130-315314
+        id: light-dungeon-20241130-315314-a831a2f9-7882-4844-b4d2-01d4a9dbb645
+        defaultKey: light-dungeon-20241130-315314-a831a2f9-7882-4844-b4d2-01d4a9dbb645
+        value: {fileID: 8300000, guid: 55ac2b746c950bf43ba80ec6463f7064, type: 3}
+        path: Assets/Music and SFX/BackGround/light-dungeon-20241130-315314.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fire-crackling-356123-536f3a50-207b-4534-9ace-c4eb8d1eb8bc
+      value:
+        key: fire-crackling-356123
+        id: fire-crackling-356123-536f3a50-207b-4534-9ace-c4eb8d1eb8bc
+        defaultKey: fire-crackling-356123-536f3a50-207b-4534-9ace-c4eb8d1eb8bc
+        value: {fileID: 8300000, guid: a7f475d15bd70ac4d9da8f7ba7a0f019, type: 3}
+        path: Assets/Music and SFX/glowing/fire-crackling-356123.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fire-sound-334130-0d45b4bb-5268-4789-8893-3e596178794f
+      value:
+        key: fire-sound-334130
+        id: fire-sound-334130-0d45b4bb-5268-4789-8893-3e596178794f
+        defaultKey: fire-sound-334130-0d45b4bb-5268-4789-8893-3e596178794f
+        value: {fileID: 8300000, guid: 0987948d0a58bba4397f625fc593dc18, type: 3}
+        path: Assets/Music and SFX/glowing/fire-sound-334130.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fire-sounds-356121-7262c21a-60c7-4fd0-8176-d47ecf046866
+      value:
+        key: fire-sounds-356121
+        id: fire-sounds-356121-7262c21a-60c7-4fd0-8176-d47ecf046866
+        defaultKey: fire-sounds-356121-7262c21a-60c7-4fd0-8176-d47ecf046866
+        value: {fileID: 8300000, guid: f52ddd171d47c074fbff321607370a2c, type: 3}
+        path: Assets/Music and SFX/glowing/fire-sounds-356121.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: 3-up-2-89189-934374be-34d2-4f57-afc7-1c40bafcd5e7
+      value:
+        key: 3-up-2-89189
+        id: 3-up-2-89189-934374be-34d2-4f57-afc7-1c40bafcd5e7
+        defaultKey: 3-up-2-89189-934374be-34d2-4f57-afc7-1c40bafcd5e7
+        value: {fileID: 8300000, guid: 8ec3da5335be8de45b241f5578044a36, type: 3}
+        path: Assets/Music and SFX/interaction/3-up-2-89189.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: energy-3-107098-a27515f3-4548-4aad-b528-e241b7ff0067
+      value:
+        key: energy-3-107098
+        id: energy-3-107098-a27515f3-4548-4aad-b528-e241b7ff0067
+        defaultKey: energy-3-107098-a27515f3-4548-4aad-b528-e241b7ff0067
+        value: {fileID: 8300000, guid: a6152f3fedc615c42a5db1b56e6edfc1, type: 3}
+        path: Assets/Music and SFX/interaction/energy-3-107098.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: item-equip-6904-c8619126-aa6f-4724-ad5e-efd160aba2c9
+      value:
+        key: item-equip-6904
+        id: item-equip-6904-c8619126-aa6f-4724-ad5e-efd160aba2c9
+        defaultKey: item-equip-6904-c8619126-aa6f-4724-ad5e-efd160aba2c9
+        value: {fileID: 8300000, guid: 591043648e3f88b44b04c25322b6e09a, type: 3}
+        path: Assets/Music and SFX/interaction/item-equip-6904.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: scale-c6-106131-8863128c-9cf5-4398-8c7b-dc8937f674f8
+      value:
+        key: scale-c6-106131
+        id: scale-c6-106131-8863128c-9cf5-4398-8c7b-dc8937f674f8
+        defaultKey: scale-c6-106131-8863128c-9cf5-4398-8c7b-dc8937f674f8
+        value: {fileID: 8300000, guid: c7f73c4a3d2aced46a76d0fde7b445b8, type: 3}
+        path: Assets/Music and SFX/interaction/scale-c6-106131.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: screw_pick-345981-8e4bbfa5-c153-4a15-acc4-5193fa5a567d
+      value:
+        key: screw_pick-345981
+        id: screw_pick-345981-8e4bbfa5-c153-4a15-acc4-5193fa5a567d
+        defaultKey: screw_pick-345981-8e4bbfa5-c153-4a15-acc4-5193fa5a567d
+        value: {fileID: 8300000, guid: 4bd05c9a404f9f64296ce906f65ecd36, type: 3}
+        path: Assets/Music and SFX/interaction/screw_pick-345981.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: take-it-90781-a233ca2d-c727-4b02-83b7-41b1daf5ab18
+      value:
+        key: take-it-90781
+        id: take-it-90781-a233ca2d-c727-4b02-83b7-41b1daf5ab18
+        defaultKey: take-it-90781-a233ca2d-c727-4b02-83b7-41b1daf5ab18
+        value: {fileID: 8300000, guid: b9ea5d14ffa2b2a4b9b9445da003e3cd, type: 3}
+        path: Assets/Music and SFX/interaction/take-it-90781.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: dungeon-type-rap-beat-20241116-300651-fe01e2cc-f32b-42b1-87fc-8e415231e68a
+      value:
+        key: dungeon-type-rap-beat-20241116-300651
+        id: dungeon-type-rap-beat-20241116-300651-fe01e2cc-f32b-42b1-87fc-8e415231e68a
+        defaultKey: dungeon-type-rap-beat-20241116-300651-fe01e2cc-f32b-42b1-87fc-8e415231e68a
+        value: {fileID: 8300000, guid: 6cb18035d3493aa4ba0e578fdf5fde50, type: 3}
+        path: Assets/Music and SFX/Main Menu/dungeon-type-rap-beat-20241116-300651.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: epic-dungeon-beat-259883-fc1c4970-8232-4abb-81d3-8c4ff7e543ea
+      value:
+        key: epic-dungeon-beat-259883
+        id: epic-dungeon-beat-259883-fc1c4970-8232-4abb-81d3-8c4ff7e543ea
+        defaultKey: epic-dungeon-beat-259883-fc1c4970-8232-4abb-81d3-8c4ff7e543ea
+        value: {fileID: 8300000, guid: d205aef62a3de93448bb8da6a46d342a, type: 3}
+        path: Assets/Music and SFX/Main Menu/epic-dungeon-beat-259883.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: 077381_scraping-stone-83768-923035ca-6d5a-42a8-bf8c-33819fe4bcf4
+      value:
+        key: 077381_scraping-stone-83768
+        id: 077381_scraping-stone-83768-923035ca-6d5a-42a8-bf8c-33819fe4bcf4
+        defaultKey: 077381_scraping-stone-83768-923035ca-6d5a-42a8-bf8c-33819fe4bcf4
+        value: {fileID: 8300000, guid: e837f19d124ad7f43ba218e82ed2cddf, type: 3}
+        path: Assets/Music and SFX/rock/077381_scraping-stone-83768.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: draggingstone-85793-e71de8db-8588-41c1-ae87-5337e31fe13e
+      value:
+        key: draggingstone-85793
+        id: draggingstone-85793-e71de8db-8588-41c1-ae87-5337e31fe13e
+        defaultKey: draggingstone-85793-e71de8db-8588-41c1-ae87-5337e31fe13e
+        value: {fileID: 8300000, guid: 29735ad79c3768f4fa6ea8cee94a4bc5, type: 3}
+        path: Assets/Music and SFX/rock/draggingstone-85793.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: stone-creek-43557-cef42928-c7b4-4d76-81bb-4dde5626df10
+      value:
+        key: stone-creek-43557
+        id: stone-creek-43557-cef42928-c7b4-4d76-81bb-4dde5626df10
+        defaultKey: stone-creek-43557-cef42928-c7b4-4d76-81bb-4dde5626df10
+        value: {fileID: 8300000, guid: 388a971d14550774dba6e12557152512, type: 3}
+        path: Assets/Music and SFX/rock/stone-creek-43557.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: stone-flowerpot-moving-2-248611-24e42aba-1d48-4332-8b5f-4a77335ee23d
+      value:
+        key: stone-flowerpot-moving-2-248611
+        id: stone-flowerpot-moving-2-248611-24e42aba-1d48-4332-8b5f-4a77335ee23d
+        defaultKey: stone-flowerpot-moving-2-248611-24e42aba-1d48-4332-8b5f-4a77335ee23d
+        value: {fileID: 8300000, guid: 3360c00f2e265054693ced79fb181690, type: 3}
+        path: Assets/Music and SFX/rock/stone-flowerpot-moving-2-248611.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: take-it-90781-52875ee1-880b-4685-a131-5e1462542210
+      value:
+        key: take-it-90781
+        id: take-it-90781-52875ee1-880b-4685-a131-5e1462542210
+        defaultKey: take-it-90781-52875ee1-880b-4685-a131-5e1462542210
+        value: {fileID: 8300000, guid: 81737df5dff5fac498c64957c2d65725, type: 3}
+        path: Assets/Music and SFX/rock/take-it-90781.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: tomb-door-open-stone-scrape-102748-cc4dc38d-0c83-4af2-b98d-9af4610aa8b2
+      value:
+        key: tomb-door-open-stone-scrape-102748
+        id: tomb-door-open-stone-scrape-102748-cc4dc38d-0c83-4af2-b98d-9af4610aa8b2
+        defaultKey: tomb-door-open-stone-scrape-102748-cc4dc38d-0c83-4af2-b98d-9af4610aa8b2
+        value: {fileID: 8300000, guid: 2408e5fec35a0d94d82255425677d65f, type: 3}
+        path: Assets/Music and SFX/rock/tomb-door-open-stone-scrape-102748.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: light-switch-382712-0e5e4289-85b3-4a19-849b-1fb5d5c70975
+      value:
+        key: light-switch-382712
+        id: light-switch-382712-0e5e4289-85b3-4a19-849b-1fb5d5c70975
+        defaultKey: light-switch-382712-0e5e4289-85b3-4a19-849b-1fb5d5c70975
+        value: {fileID: 8300000, guid: 7bb28a045e155d349a5ba13bd0243f12, type: 3}
+        path: Assets/Music and SFX/switch/light-switch-382712.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: light-switch-on-382714-0f46b8c4-926b-48cb-a0bd-577bd7e83697
+      value:
+        key: light-switch-on-382714
+        id: light-switch-on-382714-0f46b8c4-926b-48cb-a0bd-577bd7e83697
+        defaultKey: light-switch-on-382714-0f46b8c4-926b-48cb-a0bd-577bd7e83697
+        value: {fileID: 8300000, guid: 0754c79ab829963449abadcf03737877, type: 3}
+        path: Assets/Music and SFX/switch/light-switch-on-382714.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fire-effect-367659-3508296b-a113-4e07-a7cb-20058995aece
+      value:
+        key: fire-effect-367659
+        id: fire-effect-367659-3508296b-a113-4e07-a7cb-20058995aece
+        defaultKey: fire-effect-367659-3508296b-a113-4e07-a7cb-20058995aece
+        value: {fileID: 8300000, guid: 2cf70992bdd5a0c4fa0692a96f59f9fb, type: 3}
+        path: Assets/Music and SFX/torch/fire-effect-367659.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fire-torch-whoosh-2-186586-9400b525-fa9b-4825-9d32-92276a0f7e31
+      value:
+        key: fire-torch-whoosh-2-186586
+        id: fire-torch-whoosh-2-186586-9400b525-fa9b-4825-9d32-92276a0f7e31
+        defaultKey: fire-torch-whoosh-2-186586-9400b525-fa9b-4825-9d32-92276a0f7e31
+        value: {fileID: 8300000, guid: aee03c0a7d1e4fc4cbf46105c8dfe6d1, type: 3}
+        path: Assets/Music and SFX/torch/fire-torch-whoosh-2-186586.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: fireplace-fire-crackling-loop-123930-ce53e3ba-0885-4b69-8984-2da529656f8a
+      value:
+        key: fireplace-fire-crackling-loop-123930
+        id: fireplace-fire-crackling-loop-123930-ce53e3ba-0885-4b69-8984-2da529656f8a
+        defaultKey: fireplace-fire-crackling-loop-123930-ce53e3ba-0885-4b69-8984-2da529656f8a
+        value: {fileID: 8300000, guid: 920e4ebce065ef94c993c48b91a93971, type: 3}
+        path: Assets/Music and SFX/torch/fireplace-fire-crackling-loop-123930.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: torch-click-1-48731-eacef4cc-938b-43d1-91ac-780a352ebcf1
+      value:
+        key: torch-click-1-48731
+        id: torch-click-1-48731-eacef4cc-938b-43d1-91ac-780a352ebcf1
+        defaultKey: torch-click-1-48731-eacef4cc-938b-43d1-91ac-780a352ebcf1
+        value: {fileID: 8300000, guid: 8861d2b67445ee349b0b77c474e47543, type: 3}
+        path: Assets/Music and SFX/torch/torch-click-1-48731.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
   groups:
     list: []
   mixers:
-    list: []
+    list:
+    - key: 7f73c46a-9688-4918-823b-ca04427110e9
+      value:
+        uuid: 7f73c46a-9688-4918-823b-ca04427110e9
+        key: Master7f73c46a
+        path: Assets/Music and SFX/NewAudioMixer.mixer
+        mixerGroup: {fileID: 24300002, guid: 95feb0030c235a74e9ebcd1b0454498f, type: 2}
   categories: []
   tags: []

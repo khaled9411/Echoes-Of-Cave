@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 2
+  m_CurrentQuality: 3
   m_QualitySettings:
   - serializedVersion: 4
     name: Mobile Low
@@ -68,7 +68,7 @@ QualitySettings:
     - GameCoreScarlett
     - Windows Store Apps
   - serializedVersion: 4
-    name: Mobile High
+    name: Medium
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -126,7 +126,7 @@ QualitySettings:
     - GameCoreScarlett
     - Windows Store Apps
   - serializedVersion: 4
-    name: PC Low
+    name: Low
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -187,7 +187,7 @@ QualitySettings:
     - GameCoreScarlett
     - Windows Store Apps
   - serializedVersion: 4
-    name: PC High
+    name: High
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1

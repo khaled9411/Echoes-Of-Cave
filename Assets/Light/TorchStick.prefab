@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5135318152448703855}
   - component: {fileID: 1920290373587010434}
   - component: {fileID: -1843709182629260931}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TorchStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,13 +133,18 @@ MonoBehaviour:
   interactionSound: {fileID: 0}
   pickUpPrompt: Press E to pick up
   dropPrompt: Press E to drop
-  pickedUpLocalPosition: {x: 0, y: 0, z: 0}
-  pickedUpLocalRotation: {x: 0, y: 0, z: 0}
+  pickedUpLocalPosition: {x: 22, y: 6, z: 28}
+  pickedUpLocalRotation: {x: 80, y: 30.000002, z: 180}
   disablePhysicsOnPickUp: 1
   reEnablePhysicsOnDrop: 1
-  extinguishTime: 300
-  flameEffect: {fileID: 0}
-  torchLight: {fileID: 0}
+  rotationSpeed: 5
+  holdIKConstrintPosition: {x: -26, y: 1.3, z: -10.5}
+  holdIKConstrintRotation: {x: -220, y: -12, z: 80}
+  animationTriggerName: Is Grabing Item
+  isCarryingObject: 0
+  extinguishTime: 10
+  flameEffect: {fileID: 2509069722947601744}
+  torchLight: {fileID: 8437672874750480498}
   relightPrompt: Hold E to relight
 --- !u!1001 &2509069722947638862
 PrefabInstance:
@@ -214,6 +219,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
+--- !u!1 &2509069722947601744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103198, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
+  m_PrefabInstance: {fileID: 2509069722947638862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2509069722947788912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456254, guid: f65b497ff807d95439b38e7da2fab667, type: 3}
@@ -227,6 +237,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6944028279897580059}
     m_Modifications:
+    - target: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7438778628580146944, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_Name
       value: Point light 12 (1)
@@ -291,5 +305,10 @@ PrefabInstance:
 --- !u!4 &195932288026043709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9134612449682011674, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+  m_PrefabInstance: {fileID: 8970254292006621991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &8437672874750480498 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
   m_PrefabInstance: {fileID: 8970254292006621991}
   m_PrefabAsset: {fileID: 0}

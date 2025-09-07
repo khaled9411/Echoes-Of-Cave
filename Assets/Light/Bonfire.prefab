@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7268237861053716798}
   - component: {fileID: 721744568971967532}
   - component: {fileID: 525831629952710634}
-  m_Layer: 0
+  - component: {fileID: 5857888429200278510}
+  m_Layer: 14
   m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +112,31 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43132537383078812, guid: adec6d282b967e64db04dbffbe7487a3, type: 2}
+--- !u!114 &5857888429200278510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070329415389267504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fbb46ec30b28344a587d1a056c3d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: Press E to interact
+  isInteractable: 1
+  highlightObject: {fileID: 0}
+  highlightMaterial: {fileID: 0}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  audioSource: {fileID: 0}
+  interactionSound: {fileID: 0}
+  relightDuration: 2
+  defaultPrompt: Hold E to interact
+  relightHoldingPrompt: Relighting torch...
+  rotationSpeed: 5
+  holdIKConstrintPosition: {x: -25.709, y: 1.2, z: -10.359}
+  holdIKConstrintRotation: {x: 210, y: 3, z: 30}
 --- !u!1001 &3051840755753553780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_Intensity
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7438778628580146944, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_Name
