@@ -241,6 +241,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6241743921661596651, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7438778628580146944, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_Name
       value: Point light 12 (1)

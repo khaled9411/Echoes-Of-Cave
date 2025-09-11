@@ -117,7 +117,7 @@ public class AncientGateSystem : MonoBehaviour
 
         currentAnimation = StartCoroutine(OpenGateCoroutine());
     }
-
+    [ContextMenu("Close Gate")]
     public void CloseGate()
     {
         if (isAnimating || !isOpen) return;

@@ -170,6 +170,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5788729748590951763}
     m_Modifications:
+    - target: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241743921661596651, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7438778628580146944, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_Name
       value: Point light 12
