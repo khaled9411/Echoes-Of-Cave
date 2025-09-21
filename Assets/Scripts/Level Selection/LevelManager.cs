@@ -99,7 +99,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        SceneManager.LoadScene("Main");
+        //SceneManager.LoadScene("Main");
 
         SetSelectedLevel(levelNumber);
 
@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
 
             if (levelPrefab != null)
             {
-                currentLevelInstance = Instantiate(levelPrefab, Vector3.zero, Quaternion.identity);
+                currentLevelInstance = Instantiate(levelPrefab, new Vector3(0, 7, -20), Quaternion.identity);
                 Debug.Log($"Level {selectedLevel} loaded successfully!");
             }
             else

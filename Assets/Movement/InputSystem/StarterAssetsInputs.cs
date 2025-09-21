@@ -14,6 +14,7 @@ namespace StarterAssets
         public bool sprint;
         public bool interact;
         public bool interactHold;
+        public bool esc;
 
         [Header("Movement Settings")]
         public bool analogMovement;
@@ -55,6 +56,11 @@ namespace StarterAssets
         {
             interactHold = value.isPressed;
         }
+
+        public void OnESC(InputValue value)
+        {
+            ESCInput(value.isPressed);
+        }
 #endif
 
         public void MoveInput(Vector2 newMoveDirection)
@@ -82,6 +88,11 @@ namespace StarterAssets
             interact = newInteractState;
         }
 
+        public void ESCInput(bool newESCState) // Added function to set ESC state
+        {
+            esc = newESCState;
+        }
+
         private void OnApplicationFocus(bool hasFocus)
         {
             SetCursorState(cursorLocked);
@@ -92,4 +103,4 @@ namespace StarterAssets
             Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
         }
     }
-}
+} 

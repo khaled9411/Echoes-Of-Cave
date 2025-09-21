@@ -21,18 +21,11 @@ public class StoneInteractable : PickableObject
     [SerializeField] private Vector3 holeLocalPosition;
     [SerializeField] private Vector3 holeLocalRotation;
 
-    private Transform originalLocalParent;
-    private Vector3 originalLocalPosition;
-    private Quaternion originalLocalRotation;
-
     public StoneType StoneType => stoneType;
 
     protected override void Awake()
     {
         base.Awake();
-        originalLocalParent = transform.parent;
-        originalLocalPosition = transform.localPosition;
-        originalLocalRotation = transform.localRotation;
     }
 
     public override string InteractionPrompt

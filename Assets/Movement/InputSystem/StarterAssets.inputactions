@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "Press(behavior=2),Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ESC",
+                    "type": "PassThrough",
+                    "id": "016237a4-8040-41d3-bf38-0621a95f9e66",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -278,6 +287,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "InteractHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ded2c74c-cb33-4e22-94b6-f90f5e1a7c81",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "ESC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0071d265-864c-41d7-8fbb-e9fbd63a65fb",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ESC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
