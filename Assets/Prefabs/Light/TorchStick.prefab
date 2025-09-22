@@ -142,7 +142,7 @@ MonoBehaviour:
   holdIKConstrintRotation: {x: -220, y: -12, z: 80}
   animationTriggerName: Is Grabing Item
   isCarryingObject: 0
-  extinguishTime: 10
+  extinguishTime: 1000
   flameEffect: {fileID: 2509069722947601744}
   torchLight: {fileID: 8437672874750480498}
   relightPrompt: Hold E to relight

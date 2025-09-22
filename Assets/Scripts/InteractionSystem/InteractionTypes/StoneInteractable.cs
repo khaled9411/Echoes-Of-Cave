@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 public enum StoneType
 {
-    Generic,
-    RedStone,
-    BlueStone,
-    GreenStone,
+    s1,
+    s2,
+    s3,
+    s4,
+    s5,
 }
 
 public class StoneInteractable : PickableObject

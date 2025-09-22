@@ -14,50 +14,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - levelNumber: 1
-    description: 'Discription:
-
-      level 1'
+    description: "Discription:\nFind the symbol and discover what it\u2019s used
+      for."
     prefabName: Level 1
   - levelNumber: 2
     description: 'Discription:
 
-      level 2'
+      There are now two symbols to find.'
     prefabName: Level 2
   - levelNumber: 3
     description: 'Discription:
 
-      level 3'
+      There are now three symbols to find'
     prefabName: Level 3
   - levelNumber: 4
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 4
   - levelNumber: 5
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      look for the walls!'
+    prefabName: Level 5
   - levelNumber: 6
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      its too dark find the light switch. there is
+      additional sympol.'
+    prefabName: Level 6
   - levelNumber: 7
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      there''s false sympol
+
+'
+    prefabName: Level 7
   - levelNumber: 8
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      find for the lost sympol'
+    prefabName: Level 8
   - levelNumber: 9
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 9
   - levelNumber: 10
     description: 'Discription:
 
