@@ -20,6 +20,10 @@ public class LevelManager : MonoBehaviour
                     _instance = go.AddComponent<LevelManager>();
                     DontDestroyOnLoad(go);
                 }
+                else
+                {
+                    DontDestroyOnLoad(_instance.gameObject);
+                }
             }
             return _instance;
         }
@@ -159,13 +163,13 @@ public class LevelManager : MonoBehaviour
             SetSelectedLevel(nextLevel);
         }
 
-        ReturnToMainMenu();
+        //ReturnToMainMenu();
     }
 
-    public void ReturnToMainMenu()
-    {
-        SceneManager.LoadSceneAsync("MainManu");
-    }
+    //public void ReturnToMainMenu()
+    //{
+    //    SceneManager.LoadSceneAsync("MainManu");
+    //}
 
     #endregion
 

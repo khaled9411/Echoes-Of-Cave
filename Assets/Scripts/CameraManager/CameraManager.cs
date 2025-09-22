@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -5,15 +6,14 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [Header("Cinemachine Cameras")]
+    public int startCameraIndex = 0;
+    public bool isInOpenArea = true;
     public CinemachineCamera[] openAreaCameras;
     public CinemachineCamera[] closedRoomCameras;
 
     [Header("Settings")]
     public float smoothTransitionTime = 1f;
 
-    [Header("Debug")]
-    public int currentCameraIndex = 0;
-    public bool isInOpenArea = true;
 
     private CinemachineCamera currentCamera;
     private CinemachineBrain cinemachineBrain;
@@ -25,7 +25,6 @@ public class CameraManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -49,9 +48,13 @@ public class CameraManager : MonoBehaviour
     {
         DeactivateAllCameras();
 
-        if (openAreaCameras.Length > 0)
+        if (openAreaCameras.Length > 0 && isInOpenArea)
         {
-            SwitchToOpenAreaCamera(0, false);
+            SwitchToOpenAreaCamera(startCameraIndex, false);
+        }
+        else if (closedRoomCameras.Length > 0 && !isInOpenArea)
+        {
+            SwitchToClosedRoomCamera(startCameraIndex, false);
         }
     }
 
@@ -60,7 +63,10 @@ public class CameraManager : MonoBehaviour
         foreach (var cam in openAreaCameras)
         {
             if (cam != null)
+            {
                 cam.Priority = 0;
+                cam.Follow = FindFirstObjectByType<ThirdPersonController>().transform;
+            }
         }
 
         foreach (var cam in closedRoomCameras)
@@ -117,40 +123,9 @@ public class CameraManager : MonoBehaviour
 
         // Update state
         currentCamera = targetCamera;
-        currentCameraIndex = cameraIndex;
         isInOpenArea = isOpenArea;
 
         Debug.Log($"Switched to {(isOpenArea ? "open area" : "closed room")} - Camera {cameraIndex}");
-    }
-
-    public void SwitchToNextCamera(bool smoothTransition = true)
-    {
-        if (isInOpenArea)
-        {
-            int nextIndex = (currentCameraIndex + 1) % openAreaCameras.Length;
-            SwitchToOpenAreaCamera(nextIndex, smoothTransition);
-        }
-        else
-        {
-            int nextIndex = (currentCameraIndex + 1) % closedRoomCameras.Length;
-            SwitchToClosedRoomCamera(nextIndex, smoothTransition);
-        }
-    }
-
-    public void SwitchToPreviousCamera(bool smoothTransition = true)
-    {
-        if (isInOpenArea)
-        {
-            int prevIndex = currentCameraIndex - 1;
-            if (prevIndex < 0) prevIndex = openAreaCameras.Length - 1;
-            SwitchToOpenAreaCamera(prevIndex, smoothTransition);
-        }
-        else
-        {
-            int prevIndex = currentCameraIndex - 1;
-            if (prevIndex < 0) prevIndex = closedRoomCameras.Length - 1;
-            SwitchToClosedRoomCamera(prevIndex, smoothTransition);
-        }
     }
 
     public CinemachineCamera GetCurrentCamera()

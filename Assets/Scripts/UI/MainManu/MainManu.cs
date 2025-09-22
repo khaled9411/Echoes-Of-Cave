@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainManu : MonoBehaviour
 {
+    public static MainManu Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;

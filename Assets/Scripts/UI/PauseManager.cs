@@ -6,7 +6,7 @@ using StarterAssets;
 public class PauseManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Canvas pauseMenuCanvas;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Button resumeButton;
     [SerializeField] private StarterAssetsInputs starterInputs;
 
@@ -61,13 +61,13 @@ public class PauseManager : MonoBehaviour
 
     private void InitializePauseMenu()
     {
-        if (pauseMenuCanvas != null)
+        if (pauseMenu != null)
         {
             // Hide the pause menu initially
-            pauseMenuCanvas.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
 
             // Set initial scale for animation
-            pauseMenuCanvas.transform.localScale = Vector3.zero;
+            pauseMenu.transform.localScale = Vector3.zero;
         }
     }
 
@@ -120,28 +120,28 @@ public class PauseManager : MonoBehaviour
 
     private void ShowPauseMenu()
     {
-        if (pauseMenuCanvas == null) return;
+        if (pauseMenu == null) return;
 
         // Activate the canvas
-        pauseMenuCanvas.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(true);
 
         // Animate the menu appearance
-        pauseMenuCanvas.transform.localScale = Vector3.zero;
-        pauseMenuCanvas.transform.DOScale(Vector3.one, animationDuration)
+        pauseMenu.transform.localScale = Vector3.zero;
+        pauseMenu.transform.DOScale(Vector3.one, animationDuration)
             .SetEase(showEase)
             .SetUpdate(true); // Use unscaled time for animation during pause
     }
 
     private void HidePauseMenu()
     {
-        if (pauseMenuCanvas == null) return;
+        if (pauseMenu == null) return;
 
         // Animate the menu disappearance
-        pauseMenuCanvas.transform.DOScale(Vector3.zero, animationDuration)
+        pauseMenu.transform.DOScale(Vector3.zero, animationDuration)
             .SetEase(hideEase)
             .SetUpdate(true) // Use unscaled time for animation during pause
             .OnComplete(() => {
-                pauseMenuCanvas.gameObject.SetActive(false);
+                pauseMenu.gameObject.SetActive(false);
             });
     }
 
