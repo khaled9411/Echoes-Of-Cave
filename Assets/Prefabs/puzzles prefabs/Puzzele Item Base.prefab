@@ -307,13 +307,13 @@ MonoBehaviour:
   interactionSound: {fileID: 0}
   pickUpPrompt: Press E to pick up
   dropPrompt: Press E to drop
-  pickedUpLocalPosition: {x: 33.2, y: 53.5, z: -17.6}
-  pickedUpLocalRotation: {x: 52.5, y: -20, z: 61.4}
+  pickedUpLocalPosition: {x: -3.9, y: 56.4, z: -21.6}
+  pickedUpLocalRotation: {x: -6.389, y: 97.871, z: -254.81}
   disablePhysicsOnPickUp: 1
   reEnablePhysicsOnDrop: 1
   rotationSpeed: 5
-  holdIKConstrintPosition: {x: 0, y: 0, z: 0}
-  holdIKConstrintRotation: {x: 0, y: 0, z: 0}
+  holdIKConstrintPosition: {x: -3.9, y: 56.4, z: -21.6}
+  holdIKConstrintRotation: {x: -6.389, y: 97.871, z: -254.81}
   animationTriggerName: StartCarrying
   isCarryingObject: 1
   stoneType: 0
@@ -324,5 +324,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   incorrectPlacementSound: {fileID: 0}
-  holeLocalPosition: {x: 0, y: 0, z: 0}
+  holeLocalPosition: {x: 0, y: 0, z: 0.092}
   holeLocalRotation: {x: 0, y: 0, z: 0}
