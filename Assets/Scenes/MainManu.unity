@@ -352,7 +352,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162860, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_Name
-      value: Character_Hero_Knight_Male
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 487758, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +537,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 319287374292229240, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.250065
+      objectReference: {fileID: 0}
     - target: {fileID: 334910169787382300, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3045465
@@ -596,6 +600,14 @@ PrefabInstance:
     - target: {fileID: 3329317868463962118, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
       propertyPath: m_Name
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832239289713527010, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279467302799873907, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1036,6 +1048,10 @@ PrefabInstance:
     - target: {fileID: 1152069054411658658, guid: 9d48a3b973564b249b61893305139c57, type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579701829591551360, guid: 9d48a3b973564b249b61893305139c57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2347206284486912904, guid: 9d48a3b973564b249b61893305139c57, type: 3}
       propertyPath: m_AnchoredPosition.x

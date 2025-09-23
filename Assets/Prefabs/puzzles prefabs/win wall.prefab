@@ -111,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8576982382067930051}
   - component: {fileID: 8368198489769402546}
+  - component: {fileID: 4687502010495386493}
   m_Layer: 0
   m_Name: collider
   m_TagString: Untagged
@@ -154,6 +155,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.145005, y: 7.7676573, z: 8.653538}
   m_Center: {x: -0.47488832, y: -3.3838286, z: -0.69223404}
+--- !u!114 &4687502010495386493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910381818288611807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2e7a59c111c0740ade5a0ec0782942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7351920208122666714
 GameObject:
   m_ObjectHideFlags: 0

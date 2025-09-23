@@ -1452,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 24.398132
       objectReference: {fileID: 0}
+    - target: {fileID: 2503108883609774809, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+      propertyPath: m_text
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2698609929965594379, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.054546
@@ -2976,6 +2980,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 334910169787382300}
     m_Modifications:
+    - target: {fileID: 3057007683970616260, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
+      propertyPath: allStoneSlots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057007683970616260, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
+      propertyPath: 'allStoneSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8540851858790099528}
+    - target: {fileID: 3057007683970616260, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
+      propertyPath: onAllStonesPlacedCorrectly.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490398133465661483}
     - target: {fileID: 3270197358868131313, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3034,6 +3050,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5773520783134460521, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
   m_PrefabInstance: {fileID: 2444904778652127858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8540851858790099528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6298627620080465978, guid: 21132de12f9b8b34c9f624b33db5ad03, type: 3}
+  m_PrefabInstance: {fileID: 2444904778652127858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cabeb48295c2a54789808f6c61e989a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2612070316762261943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5343,7 +5370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.250065
+      value: -2.0300002
       objectReference: {fileID: 0}
     - target: {fileID: 7854330286251140578, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8866,6 +8893,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59df47654bc0f374498e349783e55020, type: 3}
+--- !u!114 &490398133465661483 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7136116586752742565, guid: 59df47654bc0f374498e349783e55020, type: 3}
+  m_PrefabInstance: {fileID: 7333736763801195662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb15344ffd0d64c45a9ff476e0947286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4225340596313164353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6874118494638530255, guid: 59df47654bc0f374498e349783e55020, type: 3}

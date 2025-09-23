@@ -1816,11 +1816,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4389455795438372509, guid: d47f7ef213c5391429f1c1a51d43b416, type: 3}
       propertyPath: m_Name
-      value: Level Base 2 Variant
+      value: Level 6
       objectReference: {fileID: 0}
     - target: {fileID: 4824378414785240134, guid: d47f7ef213c5391429f1c1a51d43b416, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.23563
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866821361356462270, guid: d47f7ef213c5391429f1c1a51d43b416, type: 3}
+      propertyPath: m_text
+      value: Level 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2248,7 +2252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.0300002
+      value: -26.250065
       objectReference: {fileID: 0}
     - target: {fileID: 7854330286251140578, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
