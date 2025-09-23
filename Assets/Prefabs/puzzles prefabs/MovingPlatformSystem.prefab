@@ -149,6 +149,7 @@ MonoBehaviour:
   mainRopeSegments: 8
   ropeMovementSound: {fileID: 0}
   soundVolume: 0.5
+  playerMovementMethod: 0
 --- !u!1 &7460702333577505220
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +274,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 103136, guid: 07f4a007d7093a64bbbdc962a82b494a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 211593171406589306}
+    - targetCorrespondingSourceObject: {fileID: 103136, guid: 07f4a007d7093a64bbbdc962a82b494a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2650164065825503924}
   m_SourcePrefab: {fileID: 100100000, guid: 07f4a007d7093a64bbbdc962a82b494a, type: 3}
 --- !u!1 &8634786672011890037 stripped
 GameObject:
@@ -300,6 +304,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0006504, y: 0.61, z: 5.000942}
   m_Center: {x: -2.4996748, y: 0.41, z: 2.499529}
+--- !u!114 &2650164065825503924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8634786672011890037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ab5773a76db774ab5d1ef230c1d199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8634786672012024969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 492316, guid: 07f4a007d7093a64bbbdc962a82b494a, type: 3}
