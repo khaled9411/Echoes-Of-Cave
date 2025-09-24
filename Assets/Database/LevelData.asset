@@ -65,30 +65,36 @@ MonoBehaviour:
   - levelNumber: 10
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 10
   - levelNumber: 11
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 11
   - levelNumber: 12
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 12
   - levelNumber: 13
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 13
   - levelNumber: 14
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 14
   - levelNumber: 15
     description: 'Discription:
 
-      level 4'
-    prefabName: Level 3
+      Explore the cave to find the correct order
+      of the symbols.'
+    prefabName: Level 15

@@ -1229,6 +1229,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall with a torch (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3328787859775155112, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328787859775155112, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6061425724526340553, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.10409
@@ -2472,6 +2480,14 @@ PrefabInstance:
     - target: {fileID: 7349324202164356747, guid: 74444b534178cdf4297ac64c8470efdd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440446436457836658, guid: 74444b534178cdf4297ac64c8470efdd, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440446436457836658, guid: 74444b534178cdf4297ac64c8470efdd, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8998217137638242401, guid: 74444b534178cdf4297ac64c8470efdd, type: 3}
       propertyPath: m_Name
@@ -5889,6 +5905,30 @@ PrefabInstance:
     - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.250065
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.547
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.91584
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9620516
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.27286795
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725851703918106194, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7854330286251140578, guid: f5194d600b068f24f89cbd100d9852d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10395,6 +10435,10 @@ PrefabInstance:
     - target: {fileID: 3272998775530826392, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
       propertyPath: m_Name
       value: wall with a torch (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272998775530826392, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6061425724526340553, guid: ea9b73f955596cf4a85270564c12e658, type: 3}
       propertyPath: m_LocalPosition.x

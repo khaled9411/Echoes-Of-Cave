@@ -7,6 +7,7 @@ public class TorchInteractable : PickableObject
     [SerializeField] private float extinguishTime = 300f;
     [SerializeField] private GameObject flameEffect;
     [SerializeField] private Light torchLight;
+    [SerializeField] private AudioClip fireExtinguisherSound;
     [SerializeField] private string relightPrompt = "Hold E to relight";
 
     private float currentTorchTime;
@@ -38,6 +39,8 @@ public class TorchInteractable : PickableObject
             currentTorchTime -= Time.deltaTime;
             if (currentTorchTime <= 0)
             {
+                audioSource.clip = fireExtinguisherSound;
+                audioSource.Play();
                 SetTorchState(false);
                 Debug.Log("Torch extinguished!");
             }

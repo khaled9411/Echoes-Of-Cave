@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 525930863}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &361510250
@@ -403,6 +403,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+--- !u!1 &525930863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7778250023819065828, guid: 9d48a3b973564b249b61893305139c57, type: 3}
+  m_PrefabInstance: {fileID: 6754818063761224464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &553726353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2639088806658284092, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
@@ -594,6 +599,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731295958653267625, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049202068388163103, guid: d4c75bc60254f5e4e97c98a891d19033, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1052,6 +1061,10 @@ PrefabInstance:
     - target: {fileID: 1579701829591551360, guid: 9d48a3b973564b249b61893305139c57, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585705415567347090, guid: 9d48a3b973564b249b61893305139c57, type: 3}
+      propertyPath: eventSystem
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2347206284486912904, guid: 9d48a3b973564b249b61893305139c57, type: 3}
       propertyPath: m_AnchoredPosition.x

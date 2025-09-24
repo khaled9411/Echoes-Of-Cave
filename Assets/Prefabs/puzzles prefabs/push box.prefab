@@ -134,7 +134,7 @@ MonoBehaviour:
   enableObstacleCheck: 1
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
   obstacleCheckRadius: 0.3
   canPushThroughSlopes: 0
   maxPushAngle: 45

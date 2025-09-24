@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class PuzzleController : MonoBehaviour
 {
@@ -36,7 +37,15 @@ public class PuzzleController : MonoBehaviour
         if (allCorrect)
         {
             Debug.Log("Puzzle solved! All stones are in their correct slots.");
-            onAllStonesPlacedCorrectly?.Invoke();
+            StartCoroutine(Win());
         }
     }
+
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(1.5f);
+        onAllStonesPlacedCorrectly?.Invoke();
+    }
+    
+
 }

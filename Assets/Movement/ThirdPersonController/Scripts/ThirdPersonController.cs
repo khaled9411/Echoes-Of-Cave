@@ -212,6 +212,11 @@ namespace StarterAssets
         {
             if (disableMovement) return;
 
+            if (_mainCamera == null)
+            {
+                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 

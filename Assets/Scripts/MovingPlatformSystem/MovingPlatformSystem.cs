@@ -52,7 +52,7 @@ public class MovingPlatformSystem : MonoBehaviour
     private Vector3[] platformCorners = new Vector3[4];
 
     // Sound components
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Enhanced player variables
     private Vector3 lastPlatformPosition;
@@ -92,10 +92,10 @@ public class MovingPlatformSystem : MonoBehaviour
         platformTransform.position = startPoint.position;
         lastPlatformPosition = platformTransform.position;
 
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = ropeMovementSound;
-        audioSource.volume = soundVolume;
-        audioSource.loop = true;
+        //audioSource = gameObject.AddComponent<AudioSource>();
+        //audioSource.clip = ropeMovementSound;
+        //audioSource.volume = soundVolume;
+        //audioSource.loop = true;
 
         CreateRopes();
         CreateMainRope();

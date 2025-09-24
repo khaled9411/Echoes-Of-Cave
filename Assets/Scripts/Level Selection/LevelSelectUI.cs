@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class LevelSelectUI : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class LevelSelectUI : MonoBehaviour
         {
             int levelNumber = i + 1;
             Transform buttonObj = levelButtonsContainer.GetChild(i);
+
             buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + levelNumber.ToString();
             Button button = buttonObj.GetComponent<Button>();
 

@@ -85,6 +85,12 @@ public class LevelManager : MonoBehaviour
         return levelNumber <= GetUnlockedLevel() && levelNumber >= 1;
     }
 
+    // New method to check if this is the last level
+    public bool IsLastLevel(int levelNumber)
+    {
+        return levelNumber >= levelData.GetTotalLevels();
+    }
+
     #endregion
 
     #region Level Loading
@@ -155,6 +161,14 @@ public class LevelManager : MonoBehaviour
         int completedLevel = GetSelectedLevel();
         Debug.Log($"Level {completedLevel} completed!");
 
+        // Check if this is the last level
+        if (IsLastLevel(completedLevel))
+        {
+            Debug.Log("Game completed! Showing credits...");
+            ShowCredits();
+            return;
+        }
+
         UnlockNextLevel(completedLevel);
 
         int nextLevel = completedLevel + 1;
@@ -164,6 +178,21 @@ public class LevelManager : MonoBehaviour
         }
 
         //ReturnToMainMenu();
+    }
+
+    private void ShowCredits()
+    {
+        // Show credits using the CreditsManager
+        if (CreditsManager.Instance != null)
+        {
+            CreditsManager.Instance.ShowCredits();
+        }
+        else
+        {
+            Debug.LogError("CreditsManager not found in scene!");
+            // Fallback: return to main menu
+            SceneManager.LoadScene(0);
+        }
     }
 
     //public void ReturnToMainMenu()

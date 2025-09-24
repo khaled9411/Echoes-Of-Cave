@@ -40,6 +40,8 @@ public class GraphicsSettingsManager : MonoBehaviour
         UpdateUI();
 
         applyButton.onClick.AddListener(ApplySettings);
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // ================== Quality ================== //

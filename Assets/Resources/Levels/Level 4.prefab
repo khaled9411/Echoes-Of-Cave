@@ -1159,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -1613,6 +1617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -1968,8 +1976,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1381078639376566637}
   m_SourcePrefab: {fileID: 100100000, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+--- !u!1 &602414302262189648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+  m_PrefabInstance: {fileID: 539877658977492784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1381078639376566637
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602414302262189648}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &602414302262366356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1090490424385294244, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
@@ -3449,6 +3492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4389455795438372509, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4800837299141627599, guid: eb0d72327aeb28342965bb7f82da7055, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.954056
@@ -4229,6 +4276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -4542,6 +4593,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -5902,6 +5957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -6598,6 +6657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -7095,13 +7158,48 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8430482307186160284}
   m_SourcePrefab: {fileID: 100100000, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
 --- !u!4 &2818881226575413923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1090490424385294244, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
   m_PrefabInstance: {fileID: 2899366847159258375}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2818881226575629415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+  m_PrefabInstance: {fileID: 2899366847159258375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8430482307186160284
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818881226575629415}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2900871472700353684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7393,8 +7491,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7476594010343845996}
   m_SourcePrefab: {fileID: 100100000, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+--- !u!1 &2624697062022353178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1090490424385470816, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
+  m_PrefabInstance: {fileID: 3120712315988381818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &7476594010343845996
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624697062022353178}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &2624697062022701022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1090490424385294244, guid: 751c99de8d9d22a43a16440e2652d8d4, type: 3}
@@ -8728,6 +8861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -9648,6 +9785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -9803,6 +9944,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -10178,6 +10323,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -10740,6 +10889,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -13356,6 +13509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -13747,6 +13904,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -14733,6 +14894,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
@@ -16605,6 +16770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -18418,6 +18587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.83
@@ -19737,6 +19910,10 @@ PrefabInstance:
     - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_Name
       value: SM_Env_Stalagmite_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 195212, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400150, guid: 4e5d9824dc45f724690777e573f84304, type: 3}
       propertyPath: m_LocalScale.x
