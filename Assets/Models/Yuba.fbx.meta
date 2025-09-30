@@ -7,13 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material_1
-    second: {fileID: 2100000, guid: 71c2ffc94620c354482b953bc3f6931f, type: 2}
+      name: tripo_mat_bf012503
+    second: {fileID: 2100000, guid: e271baa894ba5a243a4c77b7b57b3b95, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: texture_0
-    second: {fileID: 2800000, guid: e71aeed82951ee24d9000fe7b514c750, type: 3}
+      name: tripo_image_bf012503-ccb4-4182-be74-dda7a12178cc_Metallic
+    second: {fileID: 2800000, guid: b5d5064c7413b5a4c9dbb86f13ff0e42, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tripo_image_bf012503-ccb4-4182-be74-dda7a12178cc_Roughness
+    second: {fileID: 2800000, guid: a43bad08f98061c4692f768d9237cdff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tripo_image_bf012503_0
+    second: {fileID: 2800000, guid: f598d00313f3add41af267e37595b3cc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tripo_image_bf012503_2
+    second: {fileID: 2800000, guid: fcfb8046328ba014493e72c3044a8cb3, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
