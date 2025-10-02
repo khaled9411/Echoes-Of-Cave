@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
+using System.Collections;
 
 public class PlayVideoOnce_Menu : MonoBehaviour
 {
@@ -7,10 +8,13 @@ public class PlayVideoOnce_Menu : MonoBehaviour
     private VideoPlayer videoPlayer;
     private const string VideoPlayedKey = "Video1Played";
 
-    void Start()
+    IEnumerator Start()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
 
+        yield return null; // Wait a frame to ensure all Start methods have run
+
+        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.targetCamera = Camera.main;
         if (PlayerPrefs.GetInt(VideoPlayedKey, 0) == 0)
         {
 

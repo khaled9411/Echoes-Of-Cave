@@ -70,7 +70,7 @@ public class PickableObject : BaseInteractable, IPickable
 
         transform.SetParent(originalParent);
 
-        Vector3 dropPosition = interactor.transform.position + interactor.transform.forward * 1.0f;
+        Vector3 dropPosition = interactor.transform.position + interactor.transform.forward * 1.0f + new Vector3(0, 1, 0);
         transform.position = dropPosition;
 
         if (disablePhysicsOnPickUp && rb != null)
