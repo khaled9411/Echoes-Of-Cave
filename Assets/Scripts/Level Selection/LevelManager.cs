@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Steamworks;
 
 public class LevelManager : MonoBehaviour
 {
@@ -34,8 +35,10 @@ public class LevelManager : MonoBehaviour
 
     private const string UNLOCKED_LEVEL_KEY = "UnlockedLevel";
     private const string SELECTED_LEVEL_KEY = "SelectedLevel";
+    private const string STEAM_CLOUD_FILENAME = "game_progress.dat";
 
     private GameObject currentLevelInstance;
+    private bool useSteamCloud = false;
 
     private void Awake()
     {
@@ -43,12 +46,113 @@ public class LevelManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeSaveSystem();
         }
         else if (_instance != this)
         {
             Destroy(gameObject);
         }
     }
+
+    private void InitializeSaveSystem()
+    {
+        // Check if Steam is initialized and Cloud is enabled
+        try
+        {
+            if (SteamClient.IsValid && SteamRemoteStorage.IsCloudEnabled)
+            {
+                useSteamCloud = true;
+                Debug.Log("Steam Cloud enabled - using Steam Cloud for save data");
+                LoadFromSteamCloud();
+            }
+            else
+            {
+                useSteamCloud = false;
+                Debug.Log("Steam Cloud not available - using PlayerPrefs");
+            }
+        }
+        catch (Exception e)
+        {
+            useSteamCloud = false;
+            Debug.LogWarning($"Steam Cloud initialization failed: {e.Message}. Using PlayerPrefs.");
+        }
+    }
+
+    #region Steam Cloud Methods
+
+    private void LoadFromSteamCloud()
+    {
+        try
+        {
+            if (SteamRemoteStorage.FileExists(STEAM_CLOUD_FILENAME))
+            {
+                byte[] data = SteamRemoteStorage.FileRead(STEAM_CLOUD_FILENAME);
+                if (data != null && data.Length > 0)
+                {
+                    string json = System.Text.Encoding.UTF8.GetString(data);
+                    GameProgress progress = JsonUtility.FromJson<GameProgress>(json);
+
+                    // Resolve conflicts - take the higher progress
+                    int localUnlocked = PlayerPrefs.GetInt(UNLOCKED_LEVEL_KEY, 1);
+                    int localSelected = PlayerPrefs.GetInt(SELECTED_LEVEL_KEY, 1);
+
+                    int finalUnlocked = Mathf.Max(localUnlocked, progress.unlockedLevel);
+                    int finalSelected = Mathf.Max(localSelected, progress.selectedLevel);
+
+                    // Update PlayerPrefs with merged data
+                    PlayerPrefs.SetInt(UNLOCKED_LEVEL_KEY, finalUnlocked);
+                    PlayerPrefs.SetInt(SELECTED_LEVEL_KEY, finalSelected);
+                    PlayerPrefs.Save();
+
+                    Debug.Log($"Steam Cloud data loaded and merged. Unlocked: {finalUnlocked}, Selected: {finalSelected}");
+                }
+            }
+            else
+            {
+                Debug.Log("No Steam Cloud save file found. Starting fresh.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Failed to load from Steam Cloud: {e.Message}. Using local data.");
+            useSteamCloud = false;
+        }
+    }
+
+    private void SaveToSteamCloud()
+    {
+        if (!useSteamCloud)
+            return;
+
+        try
+        {
+            GameProgress progress = new GameProgress
+            {
+                unlockedLevel = PlayerPrefs.GetInt(UNLOCKED_LEVEL_KEY, 1),
+                selectedLevel = PlayerPrefs.GetInt(SELECTED_LEVEL_KEY, 1)
+            };
+
+            string json = JsonUtility.ToJson(progress);
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(json);
+
+            bool success = SteamRemoteStorage.FileWrite(STEAM_CLOUD_FILENAME, data);
+
+            if (success)
+            {
+                Debug.Log("Progress saved to Steam Cloud successfully");
+            }
+            else
+            {
+                Debug.LogWarning("Failed to write to Steam Cloud. Data saved locally only.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Failed to save to Steam Cloud: {e.Message}. Data saved locally only.");
+        }
+    }
+
+    #endregion
 
     #region Level Progress Management
 
@@ -68,6 +172,7 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(SELECTED_LEVEL_KEY, levelNumber);
             PlayerPrefs.Save();
+            SaveToSteamCloud();
         }
     }
 
@@ -79,6 +184,7 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(UNLOCKED_LEVEL_KEY, completedLevel + 1);
             PlayerPrefs.Save();
+            SaveToSteamCloud();
             Debug.Log($"Level {completedLevel + 1} unlocked!");
         }
     }
@@ -88,7 +194,6 @@ public class LevelManager : MonoBehaviour
         return levelNumber <= GetUnlockedLevel() && levelNumber >= 1;
     }
 
-    // New method to check if this is the last level
     public bool IsLastLevel(int levelNumber)
     {
         return levelNumber >= levelData.GetTotalLevels();
@@ -111,8 +216,6 @@ public class LevelManager : MonoBehaviour
             Debug.LogWarning($"Level {levelNumber} is not unlocked yet!");
             return;
         }
-
-        //SceneManager.LoadScene("Main");
 
         SetSelectedLevel(levelNumber);
 
@@ -165,7 +268,6 @@ public class LevelManager : MonoBehaviour
         int completedLevel = GetSelectedLevel();
         Debug.Log($"Level {completedLevel} completed!");
 
-        // Check if this is the last level
         if (IsLastLevel(completedLevel))
         {
             Debug.Log("Game completed! Showing credits...");
@@ -180,13 +282,10 @@ public class LevelManager : MonoBehaviour
         {
             SetSelectedLevel(nextLevel);
         }
-
-        //ReturnToMainMenu();
     }
 
     private void ShowCredits()
     {
-        // Show credits using the CreditsManager
         if (CreditsManager.Instance != null)
         {
             CreditsManager.Instance.ShowCredits();
@@ -194,15 +293,9 @@ public class LevelManager : MonoBehaviour
         else
         {
             Debug.LogError("CreditsManager not found in scene!");
-            // Fallback: return to main menu
             SceneManager.LoadScene(0);
         }
     }
-
-    //public void ReturnToMainMenu()
-    //{
-    //    SceneManager.LoadSceneAsync("MainManu");
-    //}
 
     #endregion
 
@@ -219,8 +312,49 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.DeleteKey(UNLOCKED_LEVEL_KEY);
         PlayerPrefs.DeleteKey(SELECTED_LEVEL_KEY);
         PlayerPrefs.Save();
+
+        // Also delete from Steam Cloud
+        if (useSteamCloud)
+        {
+            try
+            {
+                if (SteamRemoteStorage.FileExists(STEAM_CLOUD_FILENAME))
+                {
+                    SteamRemoteStorage.FileDelete(STEAM_CLOUD_FILENAME);
+                    Debug.Log("Progress reset from Steam Cloud!");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Failed to delete Steam Cloud save: {e.Message}");
+            }
+        }
+
         Debug.Log("Progress reset!");
     }
 
+    // Method to manually sync with Steam Cloud
+    [ContextMenu("Force Sync with Steam Cloud")]
+    public void ForceSyncWithSteam()
+    {
+        if (useSteamCloud)
+        {
+            LoadFromSteamCloud();
+            SaveToSteamCloud();
+            Debug.Log("Manual sync with Steam Cloud completed");
+        }
+        else
+        {
+            Debug.Log("Steam Cloud not available");
+        }
+    }
+
     #endregion
+}
+
+[Serializable]
+public class GameProgress
+{
+    public int unlockedLevel = 1;
+    public int selectedLevel = 1;
 }
