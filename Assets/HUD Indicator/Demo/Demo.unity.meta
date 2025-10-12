@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7b3cef96caffa51499f9f211d835b628
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Demo/Demo.unity
+  uploadId: 587374

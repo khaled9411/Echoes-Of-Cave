@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fe484ae4dd6c15142bc67efb65cbbd01
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Scripts/Components/OnScreen/IndicatorCanvasOnScreen.cs
+  uploadId: 587374

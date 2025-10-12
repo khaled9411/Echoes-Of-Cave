@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7090a1747e144a64c9d12d041df58137
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Demo/Prefabs/Ball.prefab
+  uploadId: 587374

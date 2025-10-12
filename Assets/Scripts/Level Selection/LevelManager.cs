@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     [Header("Level Data")]
     public LevelData levelData;
+
+    public Action levelWinAction;
 
     private static LevelManager _instance;
     public static LevelManager Instance
@@ -158,6 +161,7 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Win Level")]
     public void OnLevelWin()
     {
+        levelWinAction?.Invoke();
         int completedLevel = GetSelectedLevel();
         Debug.Log($"Level {completedLevel} completed!");
 

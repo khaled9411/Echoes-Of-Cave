@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 6a036023342c40e4a79a688a93b5e048
+timeCreated: 1676142091
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Scripts/SteamExtensions.cs
+  uploadId: 567120

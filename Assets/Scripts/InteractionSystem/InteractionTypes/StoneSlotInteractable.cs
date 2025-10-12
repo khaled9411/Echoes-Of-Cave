@@ -9,6 +9,8 @@ public class StoneSlotInteractable : BaseInteractable
     public UnityEvent onStonePlacedCorrectly;
     public UnityEvent onStoneRemoved;
 
+    private ParticleSystem glowParticle;
+
     private StoneInteractable placedStone;
     private bool isOccupied => placedStone != null;
 
@@ -28,6 +30,17 @@ public class StoneSlotInteractable : BaseInteractable
             Debug.LogWarning($"Collider on {gameObject.name} should be set to 'Is Trigger' for StoneSlotInteractable.", this);
         }
         UpdateHighlightEffect();
+    }
+
+    private void Start()
+    {
+        highlightEffect.SetActive(false);
+        highlightEffect = null;
+        glowParticle = GetComponentInChildren<ParticleSystem>();
+        if(glowParticle != null)
+        {
+            glowParticle.gameObject.SetActive(false);
+        }
     }
 
     public override bool CanInteract(GameObject interactor)
@@ -67,6 +80,12 @@ public class StoneSlotInteractable : BaseInteractable
 
     private void PlaceStone(StoneInteractable stone, GameObject interactor)
     {
+
+        if (glowParticle != null)
+        {
+            glowParticle.gameObject.SetActive(true);
+        }
+
         placedStone = stone;
         stone.PlaceStoneInSlot(interactor, transform);
 
@@ -94,6 +113,12 @@ public class StoneSlotInteractable : BaseInteractable
 
     private void PickUpStone(GameObject interactor)
     {
+
+        if (glowParticle != null)
+        {
+            glowParticle.gameObject.SetActive(false);
+        }
+
         if (placedStone == null) return;
 
         var manager = interactor.GetComponent<InteractionManager>();

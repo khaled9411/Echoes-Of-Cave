@@ -257,18 +257,18 @@ MonoBehaviour:
   interactionSound: {fileID: 8300000, guid: f52ddd171d47c074fbff321607370a2c, type: 3}
   pickUpPrompt: Press E to pick up
   dropPrompt: Press E to drop
-  pickedUpLocalPosition: {x: 22, y: 6, z: 28}
-  pickedUpLocalRotation: {x: 80, y: 30.000002, z: 180}
+  pickedUpLocalPosition: {x: 0.19, y: 0, z: -0.29}
+  pickedUpLocalRotation: {x: 90, y: 330, z: 0}
   disablePhysicsOnPickUp: 1
   reEnablePhysicsOnDrop: 1
   rotationSpeed: 5
-  holdIKConstrintPosition: {x: -26, y: 1.3, z: -10.5}
-  holdIKConstrintRotation: {x: -220, y: -12, z: 80}
+  holdIKConstrintPosition: {x: -24.88, y: 3, z: -10.66}
+  holdIKConstrintRotation: {x: 327.6, y: 41.600006, z: 279.40002}
   animationTriggerName: Is Grabing Item
   isCarryingObject: 0
   extinguishTime: 300
   flameEffect: {fileID: 6533158940275817271}
-  torchLight: {fileID: 2499796236982108995}
+  torchLight: {fileID: 681824300170193492}
   fireExtinguisherSound: {fileID: 8300000, guid: aee03c0a7d1e4fc4cbf46105c8dfe6d1, type: 3}
   relightPrompt: Hold E to relight
 --- !u!82 &4318196852035654186
@@ -497,6 +497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point light 12 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7438778628580146944, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9134612449682011674, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -554,11 +558,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
---- !u!108 &2499796236982108995 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 676696659690373973, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}
-  m_PrefabInstance: {fileID: 3158452051229573142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6129885936949704204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9134612449682011674, guid: a9c755f7774d7cd4bb3302df973c1bc0, type: 3}

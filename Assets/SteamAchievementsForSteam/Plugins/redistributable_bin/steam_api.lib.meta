@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3ffd5813d91aefd459583d77d2e49ddd
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Plugins/redistributable_bin/steam_api.lib
+  uploadId: 567120

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f13b7820b3a9b6145a8ea48a92291748
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Plugins/Facepunch.Steamworks.Posix.xml
+  uploadId: 567120

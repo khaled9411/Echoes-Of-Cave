@@ -22,6 +22,12 @@ public class PickableObject : BaseInteractable, IPickable
     protected bool isCurrentlyPickedUp = false;
     protected Transform originalParent;
 
+    public bool IsCurrentlyPickedUp { get
+        {
+            return isCurrentlyPickedUp;
+        } 
+    }
+
     public override string InteractionPrompt
     {
         get

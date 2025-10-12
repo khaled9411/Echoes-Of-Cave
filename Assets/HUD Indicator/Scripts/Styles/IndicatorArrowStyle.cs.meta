@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d8604db53e7e7ee4e9d2f7c00b9f1c0d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Scripts/Styles/IndicatorArrowStyle.cs
+  uploadId: 587374

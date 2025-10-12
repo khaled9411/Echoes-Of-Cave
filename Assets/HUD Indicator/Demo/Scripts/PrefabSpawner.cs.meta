@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e9f07d88dbbdf54449ab768ae9e71cc3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Demo/Scripts/PrefabSpawner.cs
+  uploadId: 587374

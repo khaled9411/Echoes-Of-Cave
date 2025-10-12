@@ -310,7 +310,7 @@ MonoBehaviour:
   interactionSound: {fileID: 8300000, guid: b9ea5d14ffa2b2a4b9b9445da003e3cd, type: 3}
   pickUpPrompt: Press E to pick up
   dropPrompt: Press E to drop
-  pickedUpLocalPosition: {x: -3.9, y: 56.4, z: -21.6}
+  pickedUpLocalPosition: {x: 0.103, y: -0.285, z: 0.478}
   pickedUpLocalRotation: {x: -6.389, y: 97.871, z: -254.81}
   disablePhysicsOnPickUp: 1
   reEnablePhysicsOnDrop: 1

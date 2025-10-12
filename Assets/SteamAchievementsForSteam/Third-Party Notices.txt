@@ -1,0 +1,5 @@
+Asset uses "Facepunch.Steamworks" under MIT;
+
+The appropiate licenses are next to the libraries in the plugins folder.
+
+All licenses are free of charge and have no obligations nor limitations.

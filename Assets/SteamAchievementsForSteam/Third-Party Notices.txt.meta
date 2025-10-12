@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f360ecff1e6282f61ad6a2fee4e85c3d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Third-Party Notices.txt
+  uploadId: 567120

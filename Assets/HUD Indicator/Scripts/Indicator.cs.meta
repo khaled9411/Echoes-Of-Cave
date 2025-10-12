@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3c9c27350a1524141be2c5374fe3a767
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220695
+  packageName: HUD Indicator
+  packageVersion: 2.0.0
+  assetPath: Assets/HUD Indicator/Scripts/Indicator.cs
+  uploadId: 587374

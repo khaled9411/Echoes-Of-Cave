@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ea452b431085aed499c01339e89fce8b
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Plugins/Facepunch.Steamworks.Win64.xml
+  uploadId: 567120

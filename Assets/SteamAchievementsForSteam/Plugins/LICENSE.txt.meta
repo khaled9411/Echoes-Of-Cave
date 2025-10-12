@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2033a02772116c27eba38b0f013c63c7
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 246610
+  packageName: Achievements & Stats for Steam
+  packageVersion: 1.0
+  assetPath: Assets/SteamAchievementsForSteam/Plugins/LICENSE.txt
+  uploadId: 567120
