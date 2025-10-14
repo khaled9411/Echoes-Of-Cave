@@ -15,20 +15,6 @@ public class LevelManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<LevelManager>();
-                if (_instance == null)
-                {
-                    GameObject go = new GameObject("LevelManager");
-                    _instance = go.AddComponent<LevelManager>();
-                    DontDestroyOnLoad(go);
-                }
-                else
-                {
-                    DontDestroyOnLoad(_instance.gameObject);
-                }
-            }
             return _instance;
         }
     }
@@ -50,7 +36,16 @@ public class LevelManager : MonoBehaviour
         }
         else if (_instance != this)
         {
+            Debug.LogWarning("Duplicate LevelManager detected and destroyed!");
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
         }
     }
 

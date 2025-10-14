@@ -615,7 +615,7 @@ MonoBehaviour:
   leftHandIK: {fileID: 665207624}
   rightHandTarget: {fileID: 1519761113}
   leftHandTarget: {fileID: 1317471203}
-  pushDetectionDistance: 1.6
+  pushDetectionDistance: 1.8
   pushSpeedReduction: 0.5
   pushActivationThreshold: 0.3
   pushStickyTime: 0.1
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   leftHandIK: {fileID: 1568098249}
   rightHandTarget: {fileID: 264956189}
   leftHandTarget: {fileID: 1138265141}
-  pushDetectionDistance: 1.6
+  pushDetectionDistance: 1.8
   pushSpeedReduction: 0.5
   pushActivationThreshold: 0.3
   pushStickyTime: 0.1
@@ -7762,7 +7762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7131522033236938842}
   - component: {fileID: 6798614536421641563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Yuba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19650,7 +19650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101561404160396319}
   - component: {fileID: 3169112241081159767}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tiziri
   m_TagString: Untagged
   m_Icon: {fileID: 0}

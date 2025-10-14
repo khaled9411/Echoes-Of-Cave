@@ -14,6 +14,8 @@ namespace LeastSquares
     {
         private static bool _initialized;
         private static uint _initializedId;
+        private static SteamEngine _instance;
+
         public uint appId = 480;
 
         /// <summary>
@@ -22,10 +24,20 @@ namespace LeastSquares
         /// <exception cref="ArgumentException">Will throw if multiple scripts of SteamEngine exist and have different AppIds</exception>
         private void Awake()
         {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
             DontDestroyOnLoad(gameObject);
+
             if (_initialized && _initializedId != appId)
                 throw new ArgumentException("Only 1 instance of SteamEngine can exist at the same time");
+
             if (_initialized) return;
+
             try
             {
                 SteamClient.Init(appId);
@@ -55,7 +67,12 @@ namespace LeastSquares
         /// </summary>
         private void OnDestroy()
         {
-            SteamClient.Shutdown();
+            if (_instance == this)
+            {
+                SteamClient.Shutdown();
+                _instance = null;
+                _initialized = false;
+            }
         }
     }
 }

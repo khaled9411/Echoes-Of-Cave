@@ -5155,6 +5155,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7832883359138556584}
     m_Modifications:
+    - target: {fileID: 2048897413588312919, guid: 7838cec87e4cf7943ac0857175039946, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a530b194a6ecd8649ac53dfae275a44e, type: 2}
     - target: {fileID: 4060722139099341828, guid: 7838cec87e4cf7943ac0857175039946, type: 3}
       propertyPath: m_Name
       value: Picsart_25-09-10_20-23-24-103

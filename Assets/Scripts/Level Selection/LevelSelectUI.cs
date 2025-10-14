@@ -20,6 +20,12 @@ public class LevelSelectUI : MonoBehaviour
         {
             playButton.onClick.AddListener(PlaySelectedLevel);
         }
+
+        if (levelButtonsContainer != null)
+        {
+            SetupLevelButtons();
+            UpdateLevelInfo();
+        }
     }
 
     private void SetupLevelButtons()
@@ -163,10 +169,6 @@ public class LevelSelectUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (levelButtonsContainer != null)
-        {
-            SetupLevelButtons();
-            UpdateLevelInfo();
-        }
+
     }
 }
