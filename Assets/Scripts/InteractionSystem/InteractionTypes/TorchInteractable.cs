@@ -49,15 +49,23 @@ public class TorchInteractable : PickableObject
 
     public override bool CanInteract(GameObject interactor)
     {
+        // Prevent interaction while animating
+        if (isAnimating) return false;
 
         return base.CanInteract(interactor) || (!IsLit && !IsPickedUp);
     }
 
     public override void Interact(GameObject interactor)
     {
+        // Prevent interaction while animating
+        if (isAnimating)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] Torch interaction blocked - animating");
+            return;
+        }
+
         base.Interact(interactor);
     }
-
 
     public void RelightTorch()
     {

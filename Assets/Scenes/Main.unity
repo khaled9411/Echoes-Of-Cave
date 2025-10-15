@@ -624,6 +624,8 @@ MonoBehaviour:
   movementThreshold: 0.001
   pushUpdateRate: 60
   useFrameRateIndependentPush: 1
+  interactionCooldown: 0.3
+  debugSpamPrevention: 0
 --- !u!114 &42572699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,6 +2162,8 @@ MonoBehaviour:
   movementThreshold: 0.001
   pushUpdateRate: 60
   useFrameRateIndependentPush: 1
+  interactionCooldown: 0.3
+  debugSpamPrevention: 1
 --- !u!114 &672267850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3053,7 +3057,7 @@ Transform:
   m_GameObject: {fileID: 1026798045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7613969, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5596,7 +5600,7 @@ Transform:
   m_GameObject: {fileID: 2088485925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.82461, y: 3.5386033, z: -11.80103}
+  m_LocalPosition: {x: -35.82461, y: 4, z: -11.80103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21294,6 +21298,8 @@ MonoBehaviour:
   movementThreshold: 0.001
   pushUpdateRate: 60
   useFrameRateIndependentPush: 1
+  interactionCooldown: 0.3
+  debugSpamPrevention: 0
 --- !u!114 &8486675054214429453
 MonoBehaviour:
   m_ObjectHideFlags: 0

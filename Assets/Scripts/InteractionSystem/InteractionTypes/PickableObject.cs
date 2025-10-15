@@ -22,10 +22,16 @@ public class PickableObject : BaseInteractable, IPickable
     protected bool isCurrentlyPickedUp = false;
     protected Transform originalParent;
 
-    public bool IsCurrentlyPickedUp { get
+    // Anti-Spam Protection
+    protected bool isAnimating = false;
+    protected Coroutine currentAnimationCoroutine = null;
+
+    public bool IsCurrentlyPickedUp
+    {
+        get
         {
             return isCurrentlyPickedUp;
-        } 
+        }
     }
 
     public override string InteractionPrompt
@@ -48,6 +54,9 @@ public class PickableObject : BaseInteractable, IPickable
 
     public override bool CanInteract(GameObject interactor)
     {
+        // Prevent interaction while animating
+        if (isAnimating) return false;
+
         return isInteractable && (!isCurrentlyPickedUp || (isCurrentlyPickedUp && transform.parent == interactor.transform.Find("InteractionPoint")));
     }
 
@@ -58,14 +67,30 @@ public class PickableObject : BaseInteractable, IPickable
 
     public void PickUp(GameObject interactor, Transform parent)
     {
-        if (isCurrentlyPickedUp) return;
+        // Prevent multiple pickup calls
+        if (isCurrentlyPickedUp || isAnimating)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] PickUp blocked - isPickedUp: {isCurrentlyPickedUp}, isAnimating: {isAnimating}");
+            return;
+        }
 
-        StartCoroutine(SmoothRotateAndAnimate(interactor, parent));
+        // Stop any existing coroutine
+        if (currentAnimationCoroutine != null)
+        {
+            StopCoroutine(currentAnimationCoroutine);
+        }
+
+        currentAnimationCoroutine = StartCoroutine(SmoothRotateAndAnimate(interactor, parent));
     }
 
     public void Drop(GameObject interactor)
     {
-        if (!isCurrentlyPickedUp) return;
+        // Prevent drop while animating or not picked up
+        if (!isCurrentlyPickedUp || isAnimating)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] Drop blocked - isPickedUp: {isCurrentlyPickedUp}, isAnimating: {isAnimating}");
+            return;
+        }
 
         isCurrentlyPickedUp = false;
         isInteractable = true;
@@ -92,32 +117,36 @@ public class PickableObject : BaseInteractable, IPickable
         if (interactionManager != null)
         {
             //IKConstraint from CURRENT to 0 
-            interactionManager.LerpRightHandWeight(0,0.5f);
+            interactionManager.LerpRightHandWeight(0, 0.5f);
         }
         Debug.Log($"{name} dropped by {interactor.name}");
     }
 
     private IEnumerator SmoothRotateAndAnimate(GameObject player, Transform parent)
     {
+        // Mark as animating immediately
+        isAnimating = true;
+
         ThirdPersonController controller = player.GetComponent<ThirdPersonController>();
-        if(controller != null)
+        if (controller != null)
             controller.disableMovement = true;
-        
+
         Debug.Log($"Starting rotation and animation coroutine in {player}.");
         Animator playerAnimator = player.GetComponent<Animator>();
 
         if (playerAnimator == null)
         {
             Debug.LogError("Player GameObject does not have an Animator component!");
+            isAnimating = false;
+            if (controller != null)
+                controller.disableMovement = false;
             yield break;
         }
 
         Vector3 direction = (transform.position - player.transform.position).normalized;
-
         direction.y = 0;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-
         bool isRotating = true;
 
         while (isRotating)
@@ -141,26 +170,24 @@ public class PickableObject : BaseInteractable, IPickable
             interactionManager.rightHandTarget.rotation = Quaternion.Euler(-260f, -60, 0);
 
             //IKConstraint from CURRENT to 0.9
-            interactionManager.LerpRightHandWeight(0.9f,1);
+            interactionManager.LerpRightHandWeight(0.9f, 1);
         }
-
 
         yield return new WaitForSeconds(0.7f);
 
         //pick up the object
-
         isCurrentlyPickedUp = true;
         isInteractable = false;
 
         transform.SetParent(parent);
         transform.localPosition = pickedUpLocalPosition;
         transform.localRotation = Quaternion.Euler(pickedUpLocalRotation);
+
         if (interactionManager != null)
         {
             interactionManager.rightHandTarget.localPosition = holdIKConstrintPosition;
             interactionManager.rightHandTarget.localRotation = Quaternion.Euler(holdIKConstrintRotation);
         }
-
 
         if (disablePhysicsOnPickUp && rb != null)
         {
@@ -177,7 +204,29 @@ public class PickableObject : BaseInteractable, IPickable
 
         Debug.Log($"{name} picked up by {player.name}");
         HideInteractionUI();
+
         if (controller != null)
             controller.disableMovement = false;
+
+        // Unlock interaction after animation completes
+        if (interactionManager != null)
+        {
+            interactionManager.UnlockInteraction();
+        }
+
+        // Mark animation as complete
+        isAnimating = false;
+        currentAnimationCoroutine = null;
+    }
+
+    protected virtual void OnDisable()
+    {
+        // Clean up coroutine if object is disabled
+        if (currentAnimationCoroutine != null)
+        {
+            StopCoroutine(currentAnimationCoroutine);
+            currentAnimationCoroutine = null;
+            isAnimating = false;
+        }
     }
 }

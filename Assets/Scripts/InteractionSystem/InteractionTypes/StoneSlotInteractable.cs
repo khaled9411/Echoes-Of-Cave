@@ -14,6 +14,9 @@ public class StoneSlotInteractable : BaseInteractable
     private StoneInteractable placedStone;
     private bool isOccupied => placedStone != null;
 
+    // Anti-Spam Protection
+    private bool isProcessingInteraction = false;
+
     public StoneType RequiredStoneType => requiredStoneType;
     public StoneInteractable PlacedStone => placedStone;
 
@@ -37,7 +40,7 @@ public class StoneSlotInteractable : BaseInteractable
         highlightEffect.SetActive(false);
         highlightEffect = null;
         glowParticle = GetComponentInChildren<ParticleSystem>();
-        if(glowParticle != null)
+        if (glowParticle != null)
         {
             glowParticle.gameObject.SetActive(false);
         }
@@ -45,6 +48,9 @@ public class StoneSlotInteractable : BaseInteractable
 
     public override bool CanInteract(GameObject interactor)
     {
+        // Prevent interaction while processing
+        if (isProcessingInteraction) return false;
+
         var manager = interactor.GetComponent<InteractionManager>();
 
         if (!isOccupied && manager != null && manager.heldObject is StoneInteractable)
@@ -61,6 +67,13 @@ public class StoneSlotInteractable : BaseInteractable
 
     public override void Interact(GameObject interactor)
     {
+        // Prevent spam interactions
+        if (isProcessingInteraction)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] Slot interaction blocked - already processing");
+            return;
+        }
+
         var manager = interactor.GetComponent<InteractionManager>();
         if (manager == null) return;
 
@@ -80,6 +93,14 @@ public class StoneSlotInteractable : BaseInteractable
 
     private void PlaceStone(StoneInteractable stone, GameObject interactor)
     {
+        // Prevent multiple placement calls
+        if (isProcessingInteraction || isOccupied)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] PlaceStone blocked - isProcessing: {isProcessingInteraction}, isOccupied: {isOccupied}");
+            return;
+        }
+
+        isProcessingInteraction = true;
 
         if (glowParticle != null)
         {
@@ -109,33 +130,60 @@ public class StoneSlotInteractable : BaseInteractable
         {
             Debug.Log($"Stone {placedStone.name} placed incorrectly! Required: {requiredStoneType}, Placed: {placedStone.StoneType}");
         }
+
+        // Unlock after a short delay to ensure animation starts
+        StartCoroutine(UnlockAfterDelay(0.1f));
     }
 
     private void PickUpStone(GameObject interactor)
     {
+        // Prevent multiple pickup calls
+        if (isProcessingInteraction || !isOccupied)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] PickUpStone blocked - isProcessing: {isProcessingInteraction}, isOccupied: {isOccupied}");
+            return;
+        }
+
+        if (placedStone == null) return;
+
+        isProcessingInteraction = true;
 
         if (glowParticle != null)
         {
             glowParticle.gameObject.SetActive(false);
         }
 
-        if (placedStone == null) return;
-
         var manager = interactor.GetComponent<InteractionManager>();
-        if (manager == null) return;
+        if (manager == null)
+        {
+            isProcessingInteraction = false;
+            return;
+        }
+
         StoneInteractable stoneToPickUp = placedStone;
 
+        // Clear the slot immediately to prevent double pickup
         placedStone = null;
+
         manager.ForcePickup(stoneToPickUp);
+        //stoneToPickUp.PickUp(interactor, manager.HandInteractionPoint);
+        //stoneToPickUp.Interact(interactor);
 
         PlayInteractionSound();
         UpdateHighlightEffect();
         HideInteractionUI();
         HideHighlight();
         onStoneRemoved?.Invoke();
+
+        // Unlock after a short delay to ensure animation starts
+        StartCoroutine(UnlockAfterDelay(0.1f));
     }
 
-
+    private System.Collections.IEnumerator UnlockAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isProcessingInteraction = false;
+    }
 
     private void UpdateHighlightEffect()
     {

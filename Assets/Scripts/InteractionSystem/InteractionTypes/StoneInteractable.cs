@@ -24,6 +24,10 @@ public class StoneInteractable : PickableObject
 
     public StoneType StoneType => stoneType;
 
+    // Anti-Spam Protection
+    private bool isBeingPlaced = false;
+    private Coroutine placementCoroutine = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,12 +41,20 @@ public class StoneInteractable : PickableObject
         }
     }
 
+    public override bool CanInteract(GameObject interactor)
+    {
+        // Prevent interaction while being placed or animating
+        if (isBeingPlaced || isAnimating) return false;
+
+        return base.CanInteract(interactor);
+    }
+
     public override void Interact(GameObject interactor)
     {
         var manager = interactor.GetComponent<InteractionManager>();
         if (manager == null) return;
 
-        if (!isCurrentlyPickedUp)
+        if (!isCurrentlyPickedUp && !isAnimating && !isBeingPlaced)
         {
             base.Interact(interactor);
         }
@@ -50,39 +62,68 @@ public class StoneInteractable : PickableObject
 
     public new void Drop(GameObject interactor)
     {
-        base.Drop(interactor);
+        // Prevent drop while being placed
+        if (isBeingPlaced)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] Drop blocked - stone is being placed");
+            return;
+        }
 
+        base.Drop(interactor);
         isInteractable = true;
     }
 
     public void PlaceStoneInSlot(GameObject interactor, Transform slotTransform)
     {
-        if (!IsPickedUp) return;
+        // Prevent multiple placement calls
+        if (!IsPickedUp || isBeingPlaced || isAnimating)
+        {
+            Debug.LogWarning($"[SPAM PREVENTION] PlaceStoneInSlot blocked - IsPickedUp: {IsPickedUp}, isBeingPlaced: {isBeingPlaced}, isAnimating: {isAnimating}");
+            return;
+        }
 
-        StartCoroutine(SmoothRotateAndAnimate(interactor, slotTransform));
+        // Stop any existing placement coroutine
+        if (placementCoroutine != null)
+        {
+            StopCoroutine(placementCoroutine);
+        }
+
+        placementCoroutine = StartCoroutine(SmoothRotateAndAnimateForPlacement(interactor, slotTransform));
     }
 
-    private IEnumerator SmoothRotateAndAnimate(GameObject player, Transform parent)
+    private IEnumerator SmoothRotateAndAnimateForPlacement(GameObject player, Transform parent)
     {
+        // Mark as being placed immediately
+        isBeingPlaced = true;
+        isAnimating = true;
+
         ThirdPersonController controller = player.GetComponent<ThirdPersonController>();
         if (controller != null)
             controller.disableMovement = true;
 
-        Debug.Log($"Starting rotation and animation coroutine in {player}.");
+        Debug.Log($"Starting stone placement animation for {name}.");
         Animator playerAnimator = player.GetComponent<Animator>();
 
         if (playerAnimator == null)
         {
             Debug.LogError("Player GameObject does not have an Animator component!");
+            isBeingPlaced = false;
+            isAnimating = false;
+            if (controller != null)
+                controller.disableMovement = false;
+
+            // Unlock interaction
+            InteractionManager manager = player.GetComponent<InteractionManager>();
+            if (manager != null)
+                manager.UnlockInteraction();
+
             yield break;
         }
 
         Vector3 direction = (transform.position - player.transform.position).normalized;
-
         direction.y = 0;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-
         bool isRotating = true;
 
         while (isRotating)
@@ -100,9 +141,9 @@ public class StoneInteractable : PickableObject
         //Put In The Hole animation
         playerAnimator.SetTrigger("PutInTheHole");
 
-
         yield return new WaitForSeconds(0.7f);
 
+        // Place the stone
         if (rb != null)
         {
             rb.isKinematic = true;
@@ -127,5 +168,32 @@ public class StoneInteractable : PickableObject
 
         if (controller != null)
             controller.disableMovement = false;
+
+        // Unlock interaction after animation completes
+        InteractionManager interactionManager = player.GetComponent<InteractionManager>();
+        if (interactionManager != null)
+        {
+            interactionManager.UnlockInteraction();
+        }
+
+        // Mark placement as complete
+        isBeingPlaced = false;
+        isAnimating = false;
+        placementCoroutine = null;
+
+        Debug.Log($"{name} placed in slot successfully.");
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        // Clean up placement coroutine if object is disabled
+        if (placementCoroutine != null)
+        {
+            StopCoroutine(placementCoroutine);
+            placementCoroutine = null;
+            isBeingPlaced = false;
+        }
     }
 }

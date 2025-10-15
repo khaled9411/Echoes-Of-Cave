@@ -31,6 +31,10 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private float pushUpdateRate = 60f;
     [SerializeField] private bool useFrameRateIndependentPush = true;
 
+    [Header("Anti-Spam Settings")]
+    [SerializeField] private float interactionCooldown = 0.3f;
+    [SerializeField] private bool debugSpamPrevention = false;
+
     public Transform HandInteractionPoint => handInteractionPoint;
 
     private StarterAssets.StarterAssetsInputs input;
@@ -63,6 +67,11 @@ public class InteractionManager : MonoBehaviour
 
     private Vector3 previousMovementDirection = Vector3.zero;
     private float currentDirectionTime = 0f;
+
+    // Anti-Spam Variables
+    private bool isInteractionLocked = false;
+    private float lastInteractionTime = -999f;
+    private bool isProcessingInteraction = false;
 
     private void Start()
     {
@@ -455,46 +464,86 @@ public class InteractionManager : MonoBehaviour
 
     public void HandleInteractionInput()
     {
+        // Check cooldown
+        if (Time.time - lastInteractionTime < interactionCooldown)
+        {
+            if (debugSpamPrevention && input.interact)
+            {
+                Debug.LogWarning($"[SPAM PREVENTION] Interaction blocked - cooldown active ({Time.time - lastInteractionTime:F2}s)");
+            }
+            input.interact = false;
+            return;
+        }
+
+        // Check if already processing
+        if (isProcessingInteraction)
+        {
+            if (debugSpamPrevention && input.interact)
+            {
+                Debug.LogWarning("[SPAM PREVENTION] Interaction blocked - already processing interaction");
+            }
+            input.interact = false;
+            return;
+        }
+
+        // Check interaction lock
+        if (isInteractionLocked)
+        {
+            if (debugSpamPrevention && input.interact)
+            {
+                Debug.LogWarning("[SPAM PREVENTION] Interaction blocked - interaction locked");
+            }
+            input.interact = false;
+            return;
+        }
+
         if (input.interact)
         {
             input.interact = false;
+            lastInteractionTime = Time.time;
+            isProcessingInteraction = true;
 
-            if (currentTargetInteractable is IPullable pullable)
+            ProcessInteraction();
+
+            isProcessingInteraction = false;
+        }
+    }
+
+    private void ProcessInteraction()
+    {
+        if (currentTargetInteractable is IPullable pullable)
+        {
+            if (currentPullable == pullable)
             {
-                if (currentPullable == pullable)
-                {
-                    currentPullable.StopPull(gameObject);
-                    currentPullable = null;
-
-                    RestorePlayerSpeed();
-                }
-                else if (currentPullable == null)
-                {
-                    currentPullable = pullable;
-                    currentPullable.StartPull(gameObject);
-                }
-                return;
+                currentPullable.StopPull(gameObject);
+                currentPullable = null;
+                RestorePlayerSpeed();
             }
-
-            if (heldObject != null)
+            else if (currentPullable == null)
             {
-                if (currentTargetInteractable != null && currentTargetInteractable != heldObject)
+                currentPullable = pullable;
+                currentPullable.StartPull(gameObject);
+            }
+            return;
+        }
+
+        if (heldObject != null)
+        {
+            if (currentTargetInteractable != null && currentTargetInteractable != heldObject)
+            {
+                if (currentTargetInteractable.CanInteract(gameObject))
                 {
-                    if (currentTargetInteractable.CanInteract(gameObject))
+                    if (currentTargetInteractable is StoneSlotInteractable stoneSlot)
                     {
-                        if (currentTargetInteractable is StoneSlotInteractable stoneSlot)
-                        {
-                            stoneSlot.Interact(gameObject);
-                            return;
-                        }
-                        else
-                        {
-                            currentTargetInteractable.Interact(gameObject);
-                        }
+                        // Lock interaction during stone placement
+                        Debug.Log("Placing stone in slot...");
+                        LockInteraction();
+                        stoneSlot.Interact(gameObject);
+                        return;
                     }
                     else
                     {
-                        DropHeldObject();
+                        currentTargetInteractable.Interact(gameObject);
                     }
                 }
                 else
@@ -502,21 +551,31 @@ public class InteractionManager : MonoBehaviour
                     DropHeldObject();
                 }
             }
-            else if (currentTargetInteractable != null)
+            else
             {
-                if (currentTargetInteractable is StoneSlotInteractable stoneSlot && stoneSlot.PlacedStone != null)
-                {
-                    stoneSlot.Interact(gameObject);
-                }
-                else if (currentTargetInteractable is IPickable pickableObject)
-                {
-                    heldObject = pickableObject;
-                    pickableObject.PickUp(gameObject, handInteractionPoint);
-                }
-                else
-                {
-                    currentTargetInteractable.Interact(gameObject);
-                }
+                DropHeldObject();
+            }
+        }
+        else if (currentTargetInteractable != null)
+        {
+            if (currentTargetInteractable is StoneSlotInteractable stoneSlot && stoneSlot.PlacedStone != null)
+            {
+                // Lock interaction during stone pickup
+                Debug.Log("Picking up stone from slot...");
+                LockInteraction();
+                stoneSlot.Interact(gameObject);
+            }
+            else if (currentTargetInteractable is IPickable pickableObject)
+            {
+                // Lock interaction during pickup
+                Debug.Log("Picking up object...");
+                LockInteraction();
+                heldObject = pickableObject;
+                pickableObject.PickUp(gameObject, handInteractionPoint);
+            }
+            else
+            {
+                currentTargetInteractable.Interact(gameObject);
             }
         }
     }
@@ -584,6 +643,15 @@ public class InteractionManager : MonoBehaviour
 
     public void ClearHeldObject()
     {
+        //if (isInteractionLocked)
+        //{
+        //    if (debugSpamPrevention)
+        //    {
+        //        Debug.LogWarning("[SPAM PREVENTION] ClearHeldObject called while locked - ignoring");
+        //    }
+        //    return;
+        //}
+
         heldObject = null;
         InteractionUIManager.Instance?.HidePrompt();
     }
@@ -614,6 +682,15 @@ public class InteractionManager : MonoBehaviour
     public void ForcePickup(IPickable itemToPickup)
     {
         if (itemToPickup == null) return;
+
+        //if (isInteractionLocked)
+        //{
+        //    if (debugSpamPrevention)
+        //    {
+        //        Debug.LogWarning("[SPAM PREVENTION] ForcePickup called while locked - ignoring");
+        //    }
+        //    return;
+        //}
 
         ClearHeldObject();
 
@@ -671,6 +748,25 @@ public class InteractionManager : MonoBehaviour
         return playerController.MoveSpeed;
     }
 
+    // Anti-Spam Methods
+    public void LockInteraction()
+    {
+        isInteractionLocked = true;
+        if (debugSpamPrevention)
+        {
+            Debug.Log("[SPAM PREVENTION] Interaction LOCKED");
+        }
+    }
+
+    public void UnlockInteraction()
+    {
+        isInteractionLocked = false;
+        if (debugSpamPrevention)
+        {
+            Debug.Log("[SPAM PREVENTION] Interaction UNLOCKED");
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (detectionPoint != null)
@@ -701,7 +797,7 @@ public class InteractionManager : MonoBehaviour
     Tween cuurentLeftTween = null;
     public void LerpRightHandWeight(float target, float duration)
     {
-        if(cuurentRightTween != null && cuurentRightTween.IsActive())
+        if (cuurentRightTween != null && cuurentRightTween.IsActive())
         {
             cuurentRightTween.Kill();
         }
