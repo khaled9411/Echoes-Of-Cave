@@ -11749,6 +11749,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f555afb422659b440a3c459a6fd83181, type: 3}
+    - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a530b194a6ecd8649ac53dfae275a44e, type: 2}
@@ -17660,9 +17664,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Picsart_25-08-12_16-28-41-085 (3) 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1365434840184905129, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a370d92bddb10bb47bd5f50cc753f0c1, type: 3}
     - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.060000002
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
       propertyPath: m_LocalScale.y
@@ -17707,6 +17715,10 @@ PrefabInstance:
     - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -207.308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -532,7 +532,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 4018903882812575809}
   style:
-    texture: {fileID: 2800000, guid: d09055c8e8fa24841baa5fe109408e9f, type: 3}
+    texture: {fileID: 2800000, guid: e88840fd49be60040bdd4e1abb91fe67, type: 3}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     width: 120
     height: 120
@@ -552,7 +552,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 4018903882812575809}
   style:
-    texture: {fileID: 2800000, guid: d09055c8e8fa24841baa5fe109408e9f, type: 3}
+    texture: {fileID: 2800000, guid: e88840fd49be60040bdd4e1abb91fe67, type: 3}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     width: 120
     height: 120
@@ -11279,7 +11279,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 5005006895325324505}
   style:
-    texture: {fileID: 2800000, guid: 22a6b8ac1ffcafd45b1908ef4c97ec0a, type: 3}
+    texture: {fileID: 2800000, guid: a370d92bddb10bb47bd5f50cc753f0c1, type: 3}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     width: 128
     height: 128
@@ -11299,7 +11299,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 5005006895325324505}
   style:
-    texture: {fileID: 2800000, guid: 22a6b8ac1ffcafd45b1908ef4c97ec0a, type: 3}
+    texture: {fileID: 2800000, guid: a370d92bddb10bb47bd5f50cc753f0c1, type: 3}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     width: 128
     height: 128

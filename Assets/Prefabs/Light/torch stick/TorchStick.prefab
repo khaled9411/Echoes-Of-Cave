@@ -257,13 +257,13 @@ MonoBehaviour:
   interactionSound: {fileID: 8300000, guid: f52ddd171d47c074fbff321607370a2c, type: 3}
   pickUpPrompt: Press E to pick up
   dropPrompt: Press E to drop
-  pickedUpLocalPosition: {x: 0.19, y: 0, z: -0.29}
-  pickedUpLocalRotation: {x: 90, y: 330, z: 0}
+  pickedUpLocalPosition: {x: 0.217, y: -0.065, z: -0.224}
+  pickedUpLocalRotation: {x: 90, y: 330, z: -5}
   disablePhysicsOnPickUp: 1
   reEnablePhysicsOnDrop: 1
   rotationSpeed: 5
-  holdIKConstrintPosition: {x: -24.88, y: 3, z: -10.66}
-  holdIKConstrintRotation: {x: 327.6, y: 41.600006, z: 279.40002}
+  holdIKConstrintPosition: {x: -24.792, y: 2.925, z: -10.472}
+  holdIKConstrintRotation: {x: -67.082, y: 16.813, z: -57.245}
   animationTriggerName: Is Grabing Item
   isCarryingObject: 0
   extinguishTime: 300

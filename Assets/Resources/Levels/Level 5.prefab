@@ -1741,6 +1741,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 334910169787382300}
     m_Modifications:
+    - target: {fileID: 2048897413588312919, guid: 7838cec87e4cf7943ac0857175039946, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acd064543f8051b40b0c40987588b817, type: 3}
+    - target: {fileID: 2048897413588312919, guid: 7838cec87e4cf7943ac0857175039946, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a530b194a6ecd8649ac53dfae275a44e, type: 2}
     - target: {fileID: 4060722139099341828, guid: 7838cec87e4cf7943ac0857175039946, type: 3}
       propertyPath: m_Name
       value: Picsart_25-09-10_20-23-24-103
@@ -2171,6 +2179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Picsart_25-08-12_16-28-41-085 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8501994984939374756, guid: 011c0d239ab398145b7f993d8d5a2650, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 064d2a88f67de07419e792ae5c799761, type: 3}
     - target: {fileID: 9114356730282181045, guid: 011c0d239ab398145b7f993d8d5a2650, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.872973
@@ -4111,6 +4123,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Picsart_25-08-12_16-28-41-085 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1365434840184905129, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a370d92bddb10bb47bd5f50cc753f0c1, type: 3}
+    - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.764191
@@ -4149,6 +4169,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014170864956507920, guid: 2be74663b058b2f4aaffd3f9d2edf454, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10310,6 +10334,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.181
       objectReference: {fileID: 0}
+    - target: {fileID: 2761726755774610864, guid: b05713ec0bf85d143bf443d9eb528482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acd064543f8051b40b0c40987588b817, type: 3}
     - target: {fileID: 4784742627493241838, guid: b05713ec0bf85d143bf443d9eb528482, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.614054
@@ -10350,6 +10378,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6572756373887952076, guid: b05713ec0bf85d143bf443d9eb528482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acd064543f8051b40b0c40987588b817, type: 3}
+    - target: {fileID: 7895824286502407321, guid: b05713ec0bf85d143bf443d9eb528482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acd064543f8051b40b0c40987588b817, type: 3}
+    - target: {fileID: 8923053970386583434, guid: b05713ec0bf85d143bf443d9eb528482, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: acd064543f8051b40b0c40987588b817, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15109,6 +15149,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 334910169787382300}
     m_Modifications:
+    - target: {fileID: 1993531952466833731, guid: b7fa796e48cf84047b28a7736efbbf5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78027f2ad7afcfd42aa1579d3c41d246, type: 3}
     - target: {fileID: 2337592109342788136, guid: b7fa796e48cf84047b28a7736efbbf5e, type: 3}
       propertyPath: m_Name
       value: Picsart_25-08-12_16-28-41-085 (3)

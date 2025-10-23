@@ -271,6 +271,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f555afb422659b440a3c459a6fd83181, type: 3}
+    - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a530b194a6ecd8649ac53dfae275a44e, type: 2}
@@ -6762,6 +6766,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f555afb422659b440a3c459a6fd83181, type: 3}
+    - target: {fileID: 4125280172364072566, guid: 1a21361eea35d7549ba398d3cc23844b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a530b194a6ecd8649ac53dfae275a44e, type: 2}
@@ -7553,6 +7561,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2368845840931475056}
     m_Modifications:
+    - target: {fileID: 1993531952466833731, guid: b7fa796e48cf84047b28a7736efbbf5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78027f2ad7afcfd42aa1579d3c41d246, type: 3}
     - target: {fileID: 2337592109342788136, guid: b7fa796e48cf84047b28a7736efbbf5e, type: 3}
       propertyPath: m_Name
       value: Picsart_25-08-12_16-28-41-085 (3)

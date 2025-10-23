@@ -38,6 +38,8 @@ public class PauseManager : MonoBehaviour
         {
             starterInputs = FindFirstObjectByType<StarterAssetsInputs>();
         }
+
+        SetCursorState(true);
     }
 
     private void Update()

@@ -13,6 +13,10 @@ public class MovingPlatformSystem : MonoBehaviour
     public float maxSpeed = 3f;
     public AnimationCurve speedCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("Wait Settings")]
+    public float waitTimeAtStart = 2f;
+    public float waitTimeAtEnd = 2f;
+
     [Header("Operation Settings")]
     public bool startAutomatically = true;
     public bool isActive = false;
@@ -45,6 +49,10 @@ public class MovingPlatformSystem : MonoBehaviour
     private float journeyTime = 0f;
     private bool movingToEnd = true;
     private bool isMoving = false;
+
+    // Wait system variables
+    private bool isWaiting = false;
+    private float waitTimer = 0f;
 
     // Rope components
     private List<LineRenderer> ropes = new List<LineRenderer>();
@@ -91,11 +99,6 @@ public class MovingPlatformSystem : MonoBehaviour
         journeyLength = Vector3.Distance(startPoint.position, endPoint.position);
         platformTransform.position = startPoint.position;
         lastPlatformPosition = platformTransform.position;
-
-        //audioSource = gameObject.AddComponent<AudioSource>();
-        //audioSource.clip = ropeMovementSound;
-        //audioSource.volume = soundVolume;
-        //audioSource.loop = true;
 
         CreateRopes();
         CreateMainRope();
@@ -156,19 +159,48 @@ public class MovingPlatformSystem : MonoBehaviour
         return new Bounds(platformTransform.position, Vector3.one * 2);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isActive && isMoving)
         {
+            if (isWaiting)
+            {
+                waitTimer += Time.fixedDeltaTime;
+
+                if (waitTimer >= GetCurrentWaitTime())
+                {
+                    isWaiting = false;
+                    waitTimer = 0f;
+                    journeyTime = 0f;
+                    movingToEnd = !movingToEnd;
+
+                    if (movingToEnd)
+                    {
+                        platformTransform.position = startPoint.position;
+                    }
+                    else
+                    {
+                        platformTransform.position = endPoint.position;
+                    }
+                }
+
+                return;
+            }
+
             Vector3 oldPosition = platformTransform.position;
 
             MovePlatform();
+
+            platformVelocity = (platformTransform.position - oldPosition) / Time.fixedDeltaTime;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (isActive && isMoving)
+        {
             UpdateRopes();
             UpdateMainRope();
-
-            platformVelocity = (platformTransform.position - oldPosition) / Time.deltaTime;
-
-            MovePlayersWithPlatform();
         }
     }
 
@@ -191,22 +223,18 @@ public class MovingPlatformSystem : MonoBehaviour
         lastPlatformPosition = platformTransform.position;
         platformTransform.position = targetPosition;
 
-        journeyTime += Time.deltaTime;
+        journeyTime += Time.fixedDeltaTime;
 
         if (fractionOfJourney >= 1f)
         {
-            journeyTime = 0f;
-            movingToEnd = !movingToEnd;
-
-            if (movingToEnd)
-            {
-                platformTransform.position = startPoint.position;
-            }
-            else
-            {
-                platformTransform.position = endPoint.position;
-            }
+            isWaiting = true;
+            waitTimer = 0f;
         }
+    }
+
+    float GetCurrentWaitTime()
+    {
+        return movingToEnd ? waitTimeAtEnd : waitTimeAtStart;
     }
 
     float GetCurrentSpeed()
@@ -263,36 +291,6 @@ public class MovingPlatformSystem : MonoBehaviour
         rope.SetPositions(ropePositions);
     }
 
-    void MovePlayersWithPlatform()
-    {
-        foreach (var kvp in playersOnPlatform)
-        {
-            Transform player = kvp.Key;
-            PlayerPlatformData data = kvp.Value;
-
-            if (player == null) continue;
-
-            switch (playerMovementMethod)
-            {
-                case MovementMethod.Parenting:
-                    break;
-
-                case MovementMethod.VelocityAddition:
-                    if (data.controller != null)
-                    {
-                        Vector3 platformMovement = platformTransform.position - lastPlatformPosition;
-                        data.controller.Move(platformMovement);
-                    }
-                    break;
-
-                case MovementMethod.PositionOffset:
-                    Vector3 movement = platformTransform.position - lastPlatformPosition;
-                    player.position += movement;
-                    break;
-            }
-        }
-    }
-
     // Control methods
     public void StartPlatform()
     {
@@ -345,6 +343,7 @@ public class MovingPlatformSystem : MonoBehaviour
                     if (playerMovementMethod == MovementMethod.Parenting)
                     {
                         playerTransform.SetParent(platformTransform);
+                        playerTransform.localRotation = Quaternion.identity;
                     }
 
                     Debug.Log("Player stepped on platform");
@@ -365,7 +364,6 @@ public class MovingPlatformSystem : MonoBehaviour
 
                 if (playerMovementMethod == MovementMethod.Parenting)
                 {
-                    //playerTransform.SetParent(playerData.originalParent);
                     playerTransform.SetParent(null);
                 }
 
@@ -379,8 +377,10 @@ public class MovingPlatformSystem : MonoBehaviour
     public bool IsMoving() => isMoving;
     public bool IsActive() => isActive;
     public bool IsMovingToEnd() => movingToEnd;
+    public bool IsWaiting() => isWaiting;
     public float GetProgress() => (journeyTime * GetCurrentSpeed()) / journeyLength;
     public Vector3 GetPlatformVelocity() => platformVelocity;
+    public float GetWaitProgress() => isWaiting ? (waitTimer / GetCurrentWaitTime()) : 0f;
 
     void OnDrawGizmos()
     {

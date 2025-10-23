@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.04
+  m_FogDensity: 0.035
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.15471691, g: 0.04071498, b: 0, a: 1}
@@ -656,7 +656,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
-  Gravity: -1
+  Gravity: -12
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
@@ -2194,7 +2194,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
-  Gravity: -1
+  Gravity: -12
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
@@ -3214,8 +3214,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
       propertyPath: disableGameobjects.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
+      propertyPath: 'disableGameobjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 672267840}
+    - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
+      propertyPath: 'disableGameobjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1572845017}
     - target: {fileID: 5381040291080326568, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.82461
@@ -5383,8 +5391,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
       propertyPath: disableGameobjects.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
+      propertyPath: 'disableGameobjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 42572690}
+    - target: {fileID: 4890390790775643196, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
+      propertyPath: 'disableGameobjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1874116445}
     - target: {fileID: 5381040291080326568, guid: 9f075dcc31424954e921190bd72903fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
