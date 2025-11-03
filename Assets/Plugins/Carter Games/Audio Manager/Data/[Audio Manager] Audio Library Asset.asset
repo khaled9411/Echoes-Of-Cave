@@ -717,6 +717,25 @@ MonoBehaviour:
         metaData:
           category: 
           tags: []
+    - key: elevator-noise-33064-adf2e79e-940e-4796-bbae-4ceb7d4e8576
+      value:
+        key: elevator-noise-33064
+        id: elevator-noise-33064-adf2e79e-940e-4796-bbae-4ceb7d4e8576
+        defaultKey: elevator-noise-33064-adf2e79e-940e-4796-bbae-4ceb7d4e8576
+        value: {fileID: 8300000, guid: a921266a4c0b64b4a921f8d72b993595, type: 3}
+        path: Assets/Music and SFX/rock/elevator-noise-33064.mp3
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
   groups:
     list: []
   mixers:

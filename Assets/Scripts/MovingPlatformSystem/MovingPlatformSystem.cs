@@ -44,6 +44,11 @@ public class MovingPlatformSystem : MonoBehaviour
         PositionOffset
     }
 
+    [Header("Gear Settings")]
+    public Transform leftGear;
+    public Transform rightGear;
+    public float gearRotationSpeed = 150f;
+
     // System variables
     private float journeyLength;
     private float journeyTime = 0f;
@@ -102,7 +107,6 @@ public class MovingPlatformSystem : MonoBehaviour
 
         CreateRopes();
         CreateMainRope();
-        UpdateRopes();
         UpdateMainRope();
     }
 
@@ -193,13 +197,14 @@ public class MovingPlatformSystem : MonoBehaviour
 
             platformVelocity = (platformTransform.position - oldPosition) / Time.fixedDeltaTime;
         }
+
+        UpdateGears();
     }
 
     void LateUpdate()
     {
         if (isActive && isMoving)
         {
-            UpdateRopes();
             UpdateMainRope();
         }
     }
@@ -262,33 +267,18 @@ public class MovingPlatformSystem : MonoBehaviour
         mainRope.SetPositions(mainRopePositions);
     }
 
-    void UpdateRopes()
+    void UpdateGears()
     {
-        if (ropeAnchorPoint == null) return;
+        if (leftGear == null || rightGear == null) return;
 
-        CalculatePlatformCorners();
+        if (!isActive || !isMoving || isWaiting) return;
 
-        for (int i = 0; i < ropes.Count && i < platformCorners.Length; i++)
-        {
-            UpdateSingleRope(ropes[i], platformCorners[i]);
-        }
-    }
+        float rotationDirection = movingToEnd ? 1f : -1f;
 
-    void UpdateSingleRope(LineRenderer rope, Vector3 platformCorner)
-    {
-        Vector3[] ropePositions = new Vector3[ropeSegments];
-        Vector3 topPoint = ropeAnchorPoint.position;
-        Vector3 bottomPoint = platformCorner;
+        float rotationAmount = rotationDirection * gearRotationSpeed * Time.fixedDeltaTime;
 
-        for (int j = 0; j < ropeSegments; j++)
-        {
-            float t = (float)j / (ropeSegments - 1);
-            Vector3 straightLine = Vector3.Lerp(topPoint, bottomPoint, t);
-            float sag = Mathf.Sin(t * Mathf.PI) * 0.5f;
-            ropePositions[j] = straightLine + Vector3.down * sag;
-        }
-
-        rope.SetPositions(ropePositions);
+        leftGear.Rotate(0f, rotationAmount, 0f, Space.Self);
+        rightGear.Rotate(0f, rotationAmount, 0f, Space.Self);
     }
 
     // Control methods
@@ -329,26 +319,22 @@ public class MovingPlatformSystem : MonoBehaviour
     // Player interaction
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter called");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player detected on platform");
             Transform playerTransform = other.transform;
 
-            if (other.transform.position.y >= platformTransform.position.y - 0.5f)
+            PlayerPlatformData playerData = new PlayerPlatformData(playerTransform);
+
+            if (playerMovementMethod == MovementMethod.Parenting)
             {
-                if (!playersOnPlatform.ContainsKey(playerTransform))
-                {
-                    PlayerPlatformData playerData = new PlayerPlatformData(playerTransform);
-                    playersOnPlatform.Add(playerTransform, playerData);
-
-                    if (playerMovementMethod == MovementMethod.Parenting)
-                    {
-                        playerTransform.SetParent(platformTransform);
-                        playerTransform.localRotation = Quaternion.identity;
-                    }
-
-                    Debug.Log("Player stepped on platform");
-                }
+                Debug.Log("Parenting player to platform");
+                playerTransform.SetParent(platformTransform);
+                playerTransform.localRotation = Quaternion.identity;
             }
+
+            Debug.Log("Player stepped on platform");
         }
     }
 
@@ -358,18 +344,12 @@ public class MovingPlatformSystem : MonoBehaviour
         {
             Transform playerTransform = other.transform;
 
-            if (playersOnPlatform.ContainsKey(playerTransform))
+            if (playerMovementMethod == MovementMethod.Parenting)
             {
-                PlayerPlatformData playerData = playersOnPlatform[playerTransform];
-
-                if (playerMovementMethod == MovementMethod.Parenting)
-                {
-                    playerTransform.SetParent(null);
-                }
-
-                playersOnPlatform.Remove(playerTransform);
-                Debug.Log("Player left platform");
+                playerTransform.SetParent(null);
             }
+
+            Debug.Log("Player left platform");
         }
     }
 
