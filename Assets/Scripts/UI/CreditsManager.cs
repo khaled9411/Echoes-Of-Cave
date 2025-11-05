@@ -91,7 +91,6 @@ public class CreditsManager : MonoBehaviour
             return;
         }
 
-        creditsCanvas.SetActive(true);
         videoDisplayObject.SetActive(true);
 
        
@@ -116,6 +115,7 @@ public class CreditsManager : MonoBehaviour
             videoDisplayObject.SetActive(false);
         }
 
+        creditsCanvas.SetActive(true);
 
         StartCreditsSequence();
     }
