@@ -11620,7 +11620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537269887606525766}
   - component: {fileID: 7246055795547924868}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19482,7 +19482,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65536
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
